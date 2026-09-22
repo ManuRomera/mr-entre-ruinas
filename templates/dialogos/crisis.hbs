@@ -1,0 +1,12 @@
+<div class="er-dialogo-cuerpo">
+  <p class="er-intro"><strong>{{actor.name}}</strong> llena sus espacios de Estrés. Describe cómo explota. <small>M 8.2</small></p>
+  <label class="er-campo">Cómo explota
+    <input type="text" name="explosion" placeholder="Un ataque de pánico, una huida, una confesión…" autofocus>
+  </label>
+  <div class="er-chips">{{#each explosiones}}<button type="button" class="er-chip" data-rellenar="explosion" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+  <p class="er-intro">Después vacía todo su Estrés, pero gana una nueva <strong>Marca permanente</strong>. <small>M 8.3</small></p>
+  <label class="er-campo">Nueva Marca permanente
+    <input type="text" name="marca" placeholder="Ya no duerme bien…">
+  </label>
+  <div class="er-chips">{{#each marcas}}<button type="button" class="er-chip" data-rellenar="marca" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+</div>

@@ -1,0 +1,12 @@
+<div class="er-dialogo-cuerpo">
+  <p class="er-intro"><strong>{{refugio.name}}</strong> llena sus espacios de Estrés. La Voz realiza de inmediato un Movimiento de comunidad. <small>R 3</small></p>
+  <label class="er-campo">Movimiento de comunidad
+    <input type="text" name="movimiento" placeholder="Alguien abre las puertas…" autofocus>
+  </label>
+  <div class="er-chips">{{#each movimientos}}<button type="button" class="er-chip" data-rellenar="movimiento" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+  <p class="er-intro">El Estrés vuelve a 0, pero el refugio gana una <strong>Marca</strong>. Un refugio nunca sale intacto del colapso.</p>
+  <label class="er-campo">Marca del refugio
+    <input type="text" name="marca" placeholder="Nadie duerme tranquilo…">
+  </label>
+  <div class="er-chips">{{#each marcas}}<button type="button" class="er-chip" data-rellenar="marca" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+</div>

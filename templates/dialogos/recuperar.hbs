@@ -1,0 +1,31 @@
+<div class="er-dialogo-cuerpo er-recuperar">
+  <p class="er-intro">Comer, dormir, reparar algo, escuchar la radio, fumar juntos… Elige <strong>una</strong> forma de recuperarte. <small>M 14 · R 4</small></p>
+  <div class="er-opciones-radio">
+    {{#each opciones}}
+    <label class="er-radio {{#if deshabilitada}}deshabilitada{{/if}}">
+      <input type="radio" name="opcion" value="{{clave}}" {{#if deshabilitada}}disabled{{/if}} {{#if @first}}{{#unless deshabilitada}}checked{{/unless}}{{/if}}>
+      <i class="{{icono}}"></i><span>{{titulo}}</span>
+    </label>
+    {{/each}}
+  </div>
+  <div class="er-extra er-extra-marca">
+    <label class="er-campo">¿Qué Marca dejas atrás por ahora?
+      <select name="marca">{{#each marcas}}<option value="{{i}}">{{texto}}</option>{{/each}}</select>
+    </label>
+  </div>
+  <div class="er-extra er-extra-vinculo">
+    <label class="er-campo">¿Qué vínculo se fortalece?
+      <select name="vinculo">{{#each vinculos}}<option value="{{this.[0]}}">{{this.[1]}}</option>{{/each}}</select>
+    </label>
+  </div>
+  {{#if refugios.length}}
+  <div class="er-extra er-extra-refugio">
+    <label class="er-campo">Refugio
+      <select name="refugio">{{#each refugios}}<option value="{{id}}">{{name}}</option>{{/each}}</select>
+    </label>
+  </div>
+  {{/if}}
+  <label class="er-campo">Qué ocurre en la escena <span class="er-tenue">(opcional)</span>
+    <textarea name="texto" rows="2" placeholder="La verdad que llevabas guardando, el recuerdo que compartís…"></textarea>
+  </label>
+</div>

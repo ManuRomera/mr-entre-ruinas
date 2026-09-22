@@ -1,0 +1,909 @@
+[
+ {
+  "_id": "guiaDelSistema00",
+  "name": "MR- Entre Ruinas · Cómo se usa en Foundry",
+  "pages": [
+   {
+    "_id": "guiapag000000000",
+    "name": "Empezar",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>MR- Entre Ruinas convierte el manual y sus dos suplementos en herramientas de mesa. No hay director: cada episodio una persona distinta es <strong>la Voz</strong>, y todo el sistema está pensado para que cualquiera pueda serlo.</p>\n<ol>\n<li><strong>Cread los personajes.</strong> Al crear un Actor de tipo <em>Personaje</em> se abre el <em>asistente de creación</em> con los seis pasos del manual, los ejemplos del libro como sugerencias y el reparto de atributos validado. También podéis arrastrar a los cuatro supervivientes del compendio <em>Supervivientes pregenerados</em>.</li>\n<li><strong>Cread el refugio</strong> (sesión 0, suplemento Refugios): un Actor de tipo <em>Refugio</em>. Pertenece a toda la mesa.</li>\n<li><strong>Abrid el Panel de la Voz</strong>: botón en el directorio de Actores o en la barra de herramientas de fichas (icono de micrófono). Elegid quién es la Voz y preparad el lugar, el problema, la amenaza y la pregunta incómoda.</li>\n</ol>\n<p>Todas las ventanas del sistema recuerdan su posición, su tamaño, la pestaña y las secciones plegadas. Si algo queda fuera de sitio: <em>Configuración → Memoria de ventanas → Olvidar posiciones</em>.</p>\n</div>"
+    },
+    "sort": 1000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "guiapag100000000",
+    "name": "La ficha de personaje",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>La columna izquierda no se mueve nunca: es lo que se usa en cada escena.</p>\n<ul>\n<li><strong>Atributos.</strong> Clic en la fila = tirada de 2d6 + atributo. La tarjeta del chat muestra el resultado: en un 7–9 la Voz elige la consecuencia con un clic; en un 6 o menos aparecen los Movimientos Duros y se marca 1 Estrés automáticamente (se puede desactivar en la configuración).</li>\n<li><strong>Ayudo a mi Vínculo Positivo.</strong> Actívalo antes de tirar: suma +1 a la siguiente tirada y se apaga solo.</li>\n<li><strong>Estrés.</strong> Clic en una casilla para fijarlo. El botón + pide el motivo y lo publica. Al llenar la quinta casilla llega la <strong>Crisis</strong>: se abre un diálogo para describir cómo explota el personaje y elegir su nueva Marca permanente; después el Estrés se vacía.</li>\n<li><strong>Fichas de Caos.</strong> + para ganar una con su motivo; la mano para gastarlas (detalle, flashback, giro o alterar la escena). Clic directo en una ficha corrige el contador sin avisar al chat.</li>\n<li><strong>Candado.</strong> Los atributos, el retrato, el nombre y los borrados solo se tocan desbloqueando la ficha. El resto del texto se edita siempre: las relaciones cambian cada episodio.</li>\n<li><strong>Modo compacto.</strong> Reduce la ficha a una columna con Marcas y Vínculos resumidos, para tenerla abierta junto al lienzo.</li>\n</ul>\n<p>En la columna derecha: <strong>Marcas</strong> (el rayo da 1 Ficha de Caos al interpretarla; la luna la deja en suspenso hasta el final del episodio), <strong>Vínculos</strong> (arrastra un personaje a la foto para enlazarlo), relaciones iniciales, objeto importante, pregunta incómoda (su respuesta solo la ve quien lleva el personaje hasta que la saca a la luz) y el diario.</p>\n</div>"
+    },
+    "sort": 2000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "guiapag200000000",
+    "name": "El Panel de la Voz",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<ul>\n<li><strong>Cabecera fija:</strong> temporada, episodio, quién es la Voz y las fases del episodio (Cold Open, escenas rápidas, escalada, punto de ruptura y cliffhanger). «Siguiente fase» anuncia cada fase en el chat.</li>\n<li><strong>Corte de escena:</strong> cualquiera puede pedirlo; también está en la barra de herramientas de fichas.</li>\n<li><strong>Escena de refugio:</strong> cada personaje elige una forma de recuperarse (borrar Estrés, fortalecer un vínculo, revelar una verdad, suspender una Marca, mejorar la Moral o bajar el Estrés del refugio…). Su ficha le avisa hasta que elige.</li>\n<li><strong>Fin del episodio:</strong> publica el cliffhanger, devuelve las Marcas suspendidas, avanza el contador (tras el sexto empieza una temporada nueva) y sugiere la siguiente Voz entre quienes aún no lo han sido esta temporada.</li>\n<li><strong>Pestañas:</strong> preparación de la sesión con ejemplos del libro y los tres escenarios de Un Mundo Violento; consecuencias y Movimientos Duros a un clic; y todos los oráculos de los tres libros, con dado para elegir al azar.</li>\n</ul>\n<p>Cualquier jugador puede abrir el panel y cambiar el estado de la mesa: la Voz rota. Los cambios los aplica el GM conectado, así que debe haber uno en la partida.</p>\n</div>"
+    },
+    "sort": 3000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "guiapag300000000",
+    "name": "El refugio",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Arriba, siempre a la vista, los cinco valores (Seguridad, Suministros, Moral, Ruido y Confianza, de 0 a 5) y el Estrés del refugio (6 casillas). Cuando un valor llega a su umbral, el chat avisa de lo que ocurre. Con los Suministros a 0, al empezar cada episodio todos los personajes ganan 1 Estrés automáticamente.</p>\n<p>Al llenar el Estrés del refugio llega la Crisis: la Voz elige un Movimiento de comunidad y el refugio gana una Marca. Si se pierde <em>lo que lo mantiene vivo</em>, el botón «Se pierde» provoca la Crisis inmediata.</p>\n<p>Los <strong>relojes</strong> son tartas: clic avanza, clic derecho retrocede; al completarse, la amenaza ocurre. Los <strong>roles</strong> asignan cargas a los personajes, y cada ficha de personaje muestra la suya.</p>\n</div>"
+    },
+    "sort": 4000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "guiacreditos0000",
+    "name": "Créditos",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<img src=\"systems/mr-entre-ruinas/assets/midra.webp\" alt=\"MIDRA\" style=\"width:160px;box-shadow:none\">\n<p><strong>Entre Ruinas</strong>, <strong>Un Mundo Violento</strong> y <strong>Refugios</strong>: juego original, textos, ambientación y arte de <strong>MIDRA · Midespinas &amp; Amdra</strong>. Todos los derechos reservados; su contenido se incluye en este sistema con permiso.</p>\n<p>Implementación para Foundry VTT: <strong>Manu Romera</strong>.</p>\n<p class=\"er-referencia\">Tipografías Oswald, Barlow Semi Condensed y Caveat bajo SIL Open Font License 1.1.</p>\n</div>"
+    },
+    "sort": 9000,
+    "ownership": {
+     "default": -1
+    }
+   }
+  ],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {}
+ },
+ {
+  "_id": "manualEntreRuina",
+  "name": "Entre Ruinas · Manual de juego",
+  "pages": [
+   {
+    "_id": "manualportada000",
+    "name": "Portada",
+    "type": "image",
+    "src": "systems/mr-entre-ruinas/assets/portadas/manual.webp",
+    "image": {
+     "caption": "Entre Ruinas. Sobrevivir no es lo mismo que seguir adelante."
+    },
+    "title": {
+     "show": false,
+     "level": 1
+    },
+    "sort": 1000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag0000000",
+    "name": "¿Qué es Entre Ruinas?",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Entre Ruinas es un juego de rol narrativo y colaborativo inspirado en las ficciones sonoras postapocalípticas: esos relatos de voz que cuentan el fin del mundo no a través de la acción, sino a través de quienes lo cuentan después. No es un juego sobre héroes, ni sobre táctica, ni sobre ganar.</p>\n<p>Es un juego sobre sobrevivir emocionalmente: sobre improvisar mientras todo empeora, discutir con quien más quieres, mentir para protegerte, proteger a otros aunque te cueste caro, traicionar cuando ya no queda otra salida, resistir un día más, y seguir adelante aunque nadie sepa muy bien por qué merece la pena.</p>\n<p>Las partidas de Entre Ruinas funcionan como episodios de una ficción sonora: escenas rápidas que no se demoran, diálogos intensos que dicen más de lo que parece, humor incómodo que aparece justo donde no debería, tensión constante que nunca llega a liberarse del todo, cliffhangers que cierran cada sesión con una pregunta sin responder, y personajes que, episodio a episodio, están cada vez más rotos.</p>\n</div>"
+    },
+    "sort": 2000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag0100000",
+    "name": "Filosofía del juego",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Entre Ruinas parte de una idea sencilla: cada sesión tiene un narrador temporal, la Voz, y ese personaje cuenta lo sucedido en primera persona. Recuerda, describe, introduce escenas, interpreta emociones y relata lo que vivió. La historia nunca se observa desde fuera: se recuerda desde dentro. Por eso, cada sesión se convierte en un testimonio, en una memoria compartida, en una versión subjetiva de los acontecimientos — nunca en un registro objetivo de lo que «realmente» pasó.</p>\n<h2>2.1 La Voz y la narración subjetiva</h2>\n<p>Como cualquier testigo, la Voz puede equivocarse, puede omitir cosas que le resultan incómodas, puede justificarse, puede recordar mal, o puede reinterpretar lo sucedido a su favor. Y como en cualquier conversación entre supervivientes, el resto de personajes no tienen por qué estar de acuerdo: pueden corregir a la Voz, discutir su versión, contradecirla, o completar esos recuerdos con detalles que ella prefería dejar fuera.</p>\n<p>Así, cada episodio adquiere un foco emocional distinto, una perspectiva diferente y una voz narrativa única: la de quien, esa noche, decide contarlo.</p>\n<h2>2.2 Narración en primera persona</h2>\n<p>La Voz no describe el mundo como lo haría un narrador externo y omnisciente. Lo hace como alguien que estuvo allí, que todavía carga con ello. Donde un narrador objetivo diría «Entráis al supermercado y escucháis un ruido», la Voz de Entre Ruinas diría algo más parecido a esto:</p>\n<div class=\"er-ejemplo\">«Recuerdo que nadie quería abrir aquella puerta. Y creo que fue ahí cuando entendí que algo iba realmente mal.»</div>\n<p>Esta forma de narrar en primera persona permite recuerdos fragmentados, narradores poco fiables, flashforwards que adelantan lo que está por venir, confesiones que se escapan sin querer, y mucha carga emocional en cada frase. Frases como las siguientes no son simples recursos de estilo: son la textura misma del juego.</p>\n<ul>\n<li>«No sabía que sería la última vez que veríamos a Dani.»</li>\n<li>«Si hubiera entendido lo que significaba aquella transmisión...»</li>\n<li>«Aún sigo pensando que deberíamos haber seguido conduciendo aquella noche.»</li>\n</ul>\n</div>"
+    },
+    "sort": 3000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag0200000",
+    "name": "Los cuatro pilares del juego",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Entre Ruinas se sostiene sobre cuatro pilares. Entenderlos bien es más importante que memorizar ninguna regla.</p>\n<h2>3.1 La conversación es el juego</h2>\n<p>Las reglas de Entre Ruinas no están pensadas para regir cada instante de la partida, sino para aparecer solo cuando hacen falta: cuando hay riesgo real, cuando las consecuencias importan, o cuando la tensión dramática lo exige. El resto del tiempo —que es la mayor parte—, la mesa simplemente conversa y construye ficción juntos, sin necesidad de tiradas ni de mecánicas.</p>\n<h2>3.2 No existe Director de Juego tradicional</h2>\n<p>En Entre Ruinas no hay una única persona que prepare la historia y dirija a las demás desde fuera. En cada sesión, un jugador distinto asume el papel de la Voz: abre las escenas, interpreta a los personajes secundarios, mantiene el ritmo, introduce los problemas y aplica las consecuencias. Pero la Voz no controla la historia: la historia, en Entre Ruinas, pertenece a toda la mesa.</p>\n<h2>3.3 El juego siempre avanza</h2>\n<p>En Entre Ruinas nunca «no pasa nada». No hay bloqueos narrativos ni escenas que se estanquen: la ficción no se detiene nunca. Cada escena que se juega debe cumplir al menos una función: revelar algo que no se sabía, complicar la situación, romper algo —un objeto, una certeza, una persona—, o cambiar una relación entre personajes.</p>\n<h2>3.4 Las personas importan más que la supervivencia</h2>\n<p>El centro del juego no son las armas, ni los recursos, ni el combate. El centro de Entre Ruinas son las relaciones entre los personajes, el desgaste emocional que van acumulando, la culpa que cargan, el miedo que sienten y las decisiones imposibles que se ven obligados a tomar. Sobrevivir es solo el telón de fondo; lo que importa de verdad es en quién se convierte cada uno al intentarlo.</p>\n</div>"
+    },
+    "sort": 4000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag0300000",
+    "name": "Material necesario",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Para jugar a Entre Ruinas necesitaréis:</p>\n<ul>\n<li>Dos dados de seis caras por jugador.</li>\n<li>Papel o fichas para anotar la información de vuestros personajes.</li>\n<li>Marcadores para el Estrés.</li>\n<li>Fichas de Caos.</li>\n</ul>\n<p>Y, por encima de todo, una mesa dispuesta a improvisar.</p>\n</div>"
+    },
+    "sort": 5000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag0400000",
+    "name": "Creación de personajes",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Los personajes de Entre Ruinas no son supervivientes perfectos ni héroes en potencia. Son personas normales que intentan mantenerse enteras mientras el mundo se les cae encima. La creación de personaje se resuelve en seis pasos.</p>\n<h2>5.1 Concepto</h2>\n<p>Describe a tu personaje con una sola frase: quién era, o quién intenta seguir siendo. No hace falta más.</p>\n<ul>\n<li>Exprofesor incapaz de callarse.</li>\n<li>Repartidora paranoica.</li>\n<li>Vigilante agotado.</li>\n<li>Enfermero sin esperanza.</li>\n<li>Friki obsesionado con las radios.</li>\n<li>Dependienta que intenta mantener la normalidad.</li>\n</ul>\n<h2>5.2 Atributos</h2>\n<p>Entre Ruinas usa cuatro atributos. Para crear tu personaje, reparte los valores +2, +1, +1 y 0 entre ellos, sin repetir ninguno.</p>\n<table><thead><tr><th>Atributo</th><th>Cubre</th></tr></thead><tbody>\n<tr><td>Violencia</td><td>Pelea, intimidación, brutalidad, destruir cosas.</td></tr>\n<tr><td>Coco</td><td>Improvisar, investigar, analizar, pensar bajo presión.</td></tr>\n<tr><td>Labia</td><td>Mentir, convencer, conectar, manipular.</td></tr>\n<tr><td>Aguante</td><td>Resistir el dolor, el miedo, el hambre y el agotamiento.</td></tr></tbody></table>\n<h2>5.3 Marca inicial</h2>\n<p>Las Marcas representan heridas emocionales, defectos de carácter o comportamientos destructivos que arrastra tu personaje. Algunos ejemplos:</p>\n<ul>\n<li>Necesita aprobación.</li>\n<li>Tiene ataques de ira.</li>\n<li>Miente constantemente.</li>\n<li>No soporta el silencio.</li>\n<li>Humor inapropiado.</li>\n<li>Se bloquea bajo presión.</li>\n<li>Nunca abandona a nadie.</li>\n<li>Siempre espera lo peor.</li>\n</ul>\n<p>Elige o inventa una Marca inicial para tu personaje. Cuando esa Marca complica la situación en juego — cuando te mete en un lío, en vez de sacarte de él—, ganas 1 Ficha de Caos.</p>\n<h2>5.4 Relaciones iniciales</h2>\n<p>Antes de empezar a jugar, cada jugador responde dos preguntas sobre los personajes sentados a su lado: sobre quien tiene a su izquierda, «le debo algo»; y sobre quien tiene a su derecha, «sé algo que no debería». Estas relaciones, aunque se definan en apenas una frase, son el núcleo emocional del juego: todo lo demás se construye sobre ellas.</p>\n<h2>5.5 Objeto importante</h2>\n<p>Cada personaje elige, además, un objeto con carga emocional. No tiene por qué ser útil para sobrevivir — de hecho, casi nunca lo es—. Puede ser una radio, una Game Boy, un mechero, una fotografía, una sudadera, un manojo de llaves que ya no abre nada, o un walkman. Lo importante no es lo que el objeto hace, sino la historia que cuenta.</p>\n<h2>5.6 La pregunta incómoda</h2>\n<p>Por último, cada jugador elige y responde una pregunta incómoda sobre su personaje:</p>\n<ul>\n<li>¿A quién abandonaste?</li>\n<li>¿Qué hiciste el primer día del colapso?</li>\n<li>¿Qué mentira sigues sosteniendo?</li>\n<li>¿Qué parte de ti murió ya?</li>\n<li>¿A quién sigues buscando?</li>\n<li>¿Qué hiciste para sobrevivir?</li>\n</ul>\n<p>La respuesta no tiene por qué compartirse con todo detalle desde el principio: basta con que exista, esperando el momento en la ficción en que decida salir a la luz.</p>\n</div>"
+    },
+    "sort": 6000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag0500000",
+    "name": "Relaciones y vínculos",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Cada personaje de Entre Ruinas tiene dos vínculos que lo anclan al resto del grupo: un Vínculo Positivo y un Vínculo Negativo.</p>\n<h2>6.1 Vínculo Positivo</h2>\n<p>El Vínculo Positivo es alguien importante para tu personaje: alguien por quien haría casi cualquier cosa.</p>\n<h2>6.2 Vínculo Negativo</h2>\n<p>El Vínculo Negativo es alguien que te irrita, que temes, o a quien culpas de algo. No tiene por qué ser un enemigo declarado: basta con que la relación pese.</p>\n<h2>6.3 Mecánica de vínculos</h2>\n<p>Estos vínculos no son solo color narrativo: tienen peso mecánico.</p>\n<ul>\n<li>Cuando ayudas a tu Vínculo Positivo, obtienes +1 a la tirada correspondiente.</li>\n<li>Cuando empeoras deliberadamente la vida de tu Vínculo Negativo, ganas 1 Ficha de Caos.</li>\n</ul>\n<h2>6.4 Evolución de vínculos</h2>\n<p>Las relaciones en Entre Ruinas nunca son estáticas. Al final de cada episodio, los jugadores pueden cambiar sus vínculos, romper relaciones que ya no tienen sentido, crear otras nuevas, o revelar secretos que llevaban tiempo guardando. Las relaciones siempre evolucionan: es, de hecho, una de las señales de que la campaña avanza.</p>\n</div>"
+    },
+    "sort": 7000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag0600000",
+    "name": "Mecánica básica",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<h2>7.1 Tiradas</h2>\n<p>Cuando un personaje intenta hacer algo arriesgado —algo cuyo resultado importa y cuyo fracaso tendría consecuencias—, se tiran 2d6 y se suma el atributo correspondiente a la acción.</p>\n<h2>7.2 Resultados</h2><table><thead><tr><th>Resultado</th><th>Efecto</th></tr></thead><tbody>\n<tr><td>10+</td><td><strong>Éxito limpio.</strong> El personaje consigue lo que buscaba y, además, la situación mejora.</td></tr>\n<tr><td>7–9</td><td><strong>Éxito con coste.</strong> El personaje lo consigue, pero… La Voz elige una consecuencia.</td></tr>\n<tr><td>6 o menos</td><td><strong>Fallo.</strong> La Voz ejecuta un Movimiento Duro y la ficción empeora.</td></tr></tbody></table>\n<h2>7.3 Consecuencias</h2>\n<p>Cuando el resultado de la tirada es de 7 a 9, la Voz elige una de estas consecuencias, o inventa otra similar en su misma línea:</p>\n<ul>\n<li>El personaje hace ruido.</li>\n<li>Alguien sale herido.</li>\n<li>Se pierde algo importante.</li>\n<li>Se gana Estrés.</li>\n<li>Se atrae atención no deseada.</li>\n<li>Otra situación empeora en paralelo.</li>\n<li>El personaje queda expuesto.</li>\n<li>Alguien empieza a desconfiar de él.</li>\n</ul>\n</div>"
+    },
+    "sort": 8000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag0700000",
+    "name": "Estrés y Crisis",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<h2>8.1 Cómo ganar Estrés</h2>\n<p>El Estrés representa el miedo, el agotamiento, la violencia encajada, la culpa, el hambre y la desesperación que un personaje va acumulando. Cada personaje dispone de 5 espacios de Estrés.</p>\n<p>Se gana Estrés cuando el personaje falla una tirada, presencia violencia extrema, pasa hambre, no descansa, discute violentamente con alguien, hace algo horrible, pierde a alguien importante, o atraviesa cualquier situación traumática.</p>\n<h2>8.2 Crisis</h2>\n<p>Cuando un personaje llena sus 5 espacios de Estrés, sufre una Crisis. En ese momento, el jugador describe cómo explota su personaje: puede ser un ataque de pánico, un estallido de violencia irracional, un bloqueo total, una huida, un episodio de paranoia, una confesión emocional que no pensaba hacer, o un colapso completo.</p>\n<p>Después de la Crisis, el personaje vacía todo su Estrés —pero a cambio, gana una nueva Marca permanente.</p>\n<h2>8.3 Marcas permanentes</h2>\n<p>Las Marcas permanentes representan cómo cambia un personaje tras atravesar una Crisis: ya no duerme bien, desconfía de todos, habla solo, se vuelve agresivo bajo presión, necesita controlar todo lo que le rodea, o ya no soporta estar a solas. Con el tiempo, estas Marcas se acumulan y terminan definiendo, tanto como cualquier atributo, en quién se ha convertido el personaje.</p>\n</div>"
+    },
+    "sort": 9000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag0800000",
+    "name": "Fichas de Caos",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Las Fichas de Caos representan autoridad narrativa repartida: permiten que cualquier jugador, no solo la Voz, contribuya activamente a construir la ficción. Cada personaje comienza la partida con 2 Fichas de Caos, y puede acumular hasta un máximo de 5.</p>\n<h2>9.1 Cómo ganar Fichas de Caos</h2>\n<p>Se gana 1 Ficha de Caos cuando un jugador:</p>\n<ul>\n<li>Complica voluntariamente la situación de su propio personaje.</li>\n<li>Interpreta activamente una de sus Marcas.</li>\n<li>Acepta una consecuencia especialmente dura sin discutirla.</li>\n<li>Empeora una escena por iniciativa propia.</li>\n<li>En general, genera drama interesante para la mesa.</li>\n</ul>\n<h2>9.2 Cómo gastar Fichas de Caos</h2>\n<table><thead><tr><th>Coste</th><th>Efecto</th></tr></thead><tbody>\n<tr><td>1 ficha</td><td>Introducir un detalle pequeño. Ejemplos: «la puerta ya estaba abierta», «reconozco esta calle».</td></tr>\n<tr><td>2 fichas</td><td>Introducir un giro de mayor peso. Ejemplos: «ese saqueador me conoce», «la radio sigue funcionando».</td></tr>\n<tr><td>3 fichas</td><td>Alterar radicalmente una escena entera. Ejemplos: «las luces vuelven», «el edificio empieza a derrumbarse», «llega otra facción».</td></tr></tbody></table>\n<h2>9.3 Flashbacks</h2>\n<p>Gastando 1 Ficha de Caos, cualquier jugador puede narrar un flashback: un recuerdo, una escena del pasado, una relación previa, o algo que ocurrió antes del momento actual de la ficción. Todo flashback debe cumplir una función dramática: revelar información que cambia lo que se sabe, complicar las emociones en juego, o alterar el contexto de la escena actual.</p>\n</div>"
+    },
+    "sort": 10000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag0900000",
+    "name": "La Voz",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<h2>10.1 Función narrativa</h2>\n<p>En cada sesión, un jugador distinto asume el papel de la Voz. Ese personaje es, a la vez, narrador, protagonista emocional del episodio, y un personaje más dentro de la ficción. La sesión entera se cuenta desde su perspectiva —nunca como una narración objetiva y externa, sino como una sucesión de recuerdos, testimonios y emociones propias.</p>\n<h2>10.2 Qué puede hacer</h2>\n<p>La Voz puede:</p>\n<ul>\n<li>Abrir escenas.</li>\n<li>Interpretar a los personajes secundarios que aparezcan.</li>\n<li>Mantener el ritmo de la partida.</li>\n<li>Introducir problemas.</li>\n<li>Lanzar las consecuencias de las tiradas.</li>\n<li>Cortar una escena cuando ya ha dado de sí todo lo que tenía que dar.</li>\n<li>Hacer preguntas incómodas al resto de la mesa.</li>\n</ul>\n<h2>10.3 Qué no puede hacer</h2>\n<p>La Voz no puede:</p>\n<ul>\n<li>Escribir de antemano una trama cerrada que el resto de la mesa deba seguir.</li>\n<li>Controlar las decisiones de los demás personajes.</li>\n<li>Bloquear las ideas que proponga cualquier otro jugador.</li>\n<li>Imponer un resultado que no haya salido de una tirada o de un acuerdo de mesa.</li>\n</ul>\n</div>"
+    },
+    "sort": 11000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag1000000",
+    "name": "Cómo preparar una sesión",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>La Voz no necesita preparar una historia completa antes de sentarse a jugar —de hecho, no debería. Le basta con tener cuatro elementos sueltos.</p>\n<h2>11.1 Lugar</h2>\n<p>Un espacio concreto donde situar la primera escena. Ejemplos: un supermercado, un parking, un hospital, un edificio abandonado.</p>\n<h2>11.2 Problema</h2>\n<p>Algo que necesita resolverse. Ejemplos: alguien ha desaparecido, faltan medicinas, una transmisión de radio pide ayuda.</p>\n<h2>11.3 Amenaza</h2>\n<p>Una fuente de peligro o tensión latente. Ejemplos: saqueadores, el hambre, la violencia, otra comunidad, la paranoia del propio grupo.</p>\n<h2>11.4 Pregunta incómoda</h2>\n<p>Una pregunta que la sesión, tarde o temprano, debería obligar a responder. Ejemplos: ¿A quién dejaríais atrás? ¿Merece la pena ayudar? ¿Qué estáis ocultando?</p>\n<p>Con estos cuatro elementos —lugar, problema, amenaza y pregunta—, la Voz tiene más que suficiente para abrir la sesión y dejar que la mesa haga el resto.</p>\n<h3>Frases que ayudan a la Voz a improvisar</h3>\n<ul>\n<li>«¿Quién empeora esto?»</li>\n<li>«¿Qué detalle horrible notas?»</li>\n<li>«¿Por qué esto te afecta tanto?»</li>\n<li>«¿Qué recuerdas ahora?»</li>\n<li>«Vale... pero alguien paga el precio.»</li>\n<li>«¿Quién se queda atrás?»</li>\n</ul>\n</div>"
+    },
+    "sort": 12000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag1100000",
+    "name": "Movimientos Duros",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Cuando un personaje falla una tirada, la Voz aplica un Movimiento Duro: una consecuencia narrativa que empeora la ficción de forma clara e irreversible. Entre las opciones disponibles, la Voz puede:</p>\n<ul>\n<li>Separar al grupo.</li>\n<li>Agotar sus recursos.</li>\n<li>Revelar una verdad incómoda.</li>\n<li>Introducir violencia.</li>\n<li>Romper algo importante.</li>\n<li>Forzar una decisión moral.</li>\n<li>Introducir a otra facción en la escena.</li>\n<li>Activar una Crisis.</li>\n<li>Hacer desaparecer a alguien.</li>\n<li>Convertir un éxito aparente en un problema nuevo.</li>\n<li>Sacar a la luz un secreto.</li>\n<li>Cambiar el objetivo de la escena.</li>\n<li>Introducir un silencio o un ruido inquietante.</li>\n<li>Hacer llegar a alguien de forma inesperada.</li>\n</ul>\n</div>"
+    },
+    "sort": 13000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag1200000",
+    "name": "Estructura de episodio",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Cada sesión de Entre Ruinas funciona como un episodio de ficción sonora, y sigue una estructura reconocible en cinco fases.</p>\n<h2>13.1 Cold Open</h2>\n<p>La Voz abre la sesión directamente con tensión, sin ninguna introducción previa.</p>\n<div class=\"er-ejemplo\">«Cuando abrís la puerta del supermercado, alguien está llorando dentro.» Sin preámbulo. Directo al problema.</div>\n<h2>13.2 Escenas rápidas</h2>\n<p>Cada escena debe durar entre 5 y 15 minutos. En cuanto una escena ha dado ya todo lo importante que tenía que dar, se corta: cualquier jugador puede pedir en voz alta «corte de escena» para pasar a la siguiente.</p>\n<h2>13.3 Escalada</h2>\n<p>Cada escena debe empeorar algo, revelar algo, o romper algo: nunca dejar la situación exactamente igual a como la encontró.</p>\n<h2>13.4 Punto de ruptura</h2>\n<p>En algún momento de la sesión, alguien debe llegar a su límite: colapsa, miente abiertamente, desaparece, traiciona a los demás, o pierde el control por completo.</p>\n<h2>13.5 Cliffhanger final</h2>\n<p>Toda sesión de Entre Ruinas debe terminar dejando una pregunta abierta: una transmisión extraña, unos golpes en la puerta, la desaparición de alguien, una comunidad inesperada, o una voz conocida sonando de nuevo en la radio.</p>\n</div>"
+    },
+    "sort": 14000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag1300000",
+    "name": "Escenas de refugio y recuperación",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>No todo, en Entre Ruinas, tiene que ser sufrimiento: las escenas tranquilas son tan fundamentales como las de tensión. En ellas, los personajes comen, descansan, hablan, recuerdan, ríen, discuten, o simplemente intentan sentirse humanos durante un rato.</p>\n<p>Durante una escena de refugio, un personaje puede:</p>\n<ul>\n<li>Borrar 1 punto de Estrés.</li>\n<li>Fortalecer uno de sus vínculos.</li>\n<li>Revelar una verdad que llevaba guardando.</li>\n<li>Eliminar temporalmente una de sus Marcas.</li>\n</ul>\n</div>"
+    },
+    "sort": 15000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag1400000",
+    "name": "Campañas y temporadas",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Entre Ruinas funciona mejor cuando se organiza en temporadas, a la manera de una serie. Se recomienda una duración de 6 episodios por temporada.</p>\n<p>Al terminar cada temporada:</p>\n<ul>\n<li>El grupo cambia.</li>\n<li>Las relaciones evolucionan.</li>\n<li>El refugio que los personajes llamaban hogar puede desaparecer.</li>\n<li>Y el mundo, en conjunto, empeora un poco más.</li>\n</ul>\n</div>"
+    },
+    "sort": 16000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag1500000",
+    "name": "Abandonar el juego",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Cuando un personaje acumula demasiadas Marcas, o cuando su jugador simplemente decide que ya no puede continuar con él, tiene varias salidas posibles:</p>\n<ul>\n<li>Retirarlo de la partida.</li>\n<li>Sacrificarlo en una escena con sentido.</li>\n<li>Hacerlo desaparecer sin más explicación.</li>\n<li>Convertirlo en un personaje no jugador con el que la mesa siga topándose.</li>\n<li>Transformarlo por completo en otra cosa.</li>\n</ul>\n<p>Las muertes importantes nunca deben sentirse arbitrarias: siempre tienen que cargar con peso emocional.</p>\n</div>"
+    },
+    "sort": 17000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag1600000",
+    "name": "El tono del juego",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Entre Ruinas mezcla tensión, humanidad, humor incómodo y desesperación a partes iguales: ninguno de estos elementos funciona bien sin los otros tres.</p>\n<h2>17.1 El humor correcto</h2>\n<p>El humor, en Entre Ruinas, debe surgir de:</p>\n<ul>\n<li>Discusiones absurdas entre personajes agotados.</li>\n<li>El nerviosismo genuino ante el peligro.</li>\n<li>El egoísmo ridículo de alguien intentando salvar solo lo suyo.</li>\n<li>Comentarios incómodos que nadie debería hacer en ese momento.</li>\n<li>La torpeza profundamente humana de gente que no sabe lo que hace.</li>\n</ul>\n<h2>17.2 Qué evitar</h2>\n<p>Conviene evitar:</p>\n<ul>\n<li>La parodia constante.</li>\n<li>Los memes continuos.</li>\n<li>Romper las escenas dramáticas por sistema.</li>\n<li>Cualquier humor que sea externo a la ficción: el chiste tiene que nacer de dentro del mundo, no de fuera de él.</li>\n</ul>\n</div>"
+    },
+    "sort": 18000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag1700000",
+    "name": "Consejos finales",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<ul>\n<li>Cortad las escenas pronto, antes de que se agoten por sí solas.</li>\n<li>Haced preguntas incómodas con frecuencia.</li>\n<li>Dejad espacio para el silencio: no todo necesita llenarse de diálogo.</li>\n<li>Usad música o sonido ambiente si os ayuda a meteros en situación.</li>\n<li>Pensad como guionistas de una serie, no como jugadores intentando ganar.</li>\n<li>No intentéis ganar la partida: de hecho, no hay forma de ganarla.</li>\n<li>Intentad, simplemente, sobrevivir sin perderos completamente a vosotros mismos por el camino.</li>\n</ul>\n</div>"
+    },
+    "sort": 19000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag1800000",
+    "name": "Resumen rápido de reglas",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<h2>19.1 Tiradas</h2>\n<p>2d6 + atributo. 10+ es éxito. 7–9 es éxito con coste. 6 o menos es Movimiento Duro.</p>\n<h2>19.2 Estrés</h2>\n<p>5 espacios. Al llenarse, Crisis.</p>\n<h2>19.3 Fichas de Caos</h2>\n<p>Se ganan complicando la ficción. Se gastan para añadir detalles, alterar escenas, narrar flashbacks o introducir giros.</p>\n<h2>19.4 La Voz</h2>\n<p>Narrador rotativo. Abre escenas, mantiene el ritmo, introduce consecuencias. Pero la historia pertenece a todos.</p>\n</div>"
+    },
+    "sort": 20000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpag1900000",
+    "name": "La última regla",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p class=\"er-cita-final\">Haced que el mundo se sienta vivo. Y dejad que los personajes decidan cuánto de ellos mismos están dispuestos a perder para sobrevivir.</p>\n</div>"
+    },
+    "sort": 21000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualpregen0000",
+    "name": "Supervivientes pregenerados",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Los cuatro supervivientes del manual están listos para jugar en el compendio <strong>ER · Supervivientes pregenerados</strong>, con sus Marcas, relaciones, vínculos y preguntas incómodas.</p>\n<img src=\"systems/mr-entre-ruinas/assets/pregenerados/luz-ficha.webp\" alt=\"Lucía “Luz” Romero\">\n<img src=\"systems/mr-entre-ruinas/assets/pregenerados/gabo-ficha.webp\" alt=\"Gabriel “Gabo” Salvatierra\">\n<img src=\"systems/mr-entre-ruinas/assets/pregenerados/marta-ficha.webp\" alt=\"Marta Vidal\">\n<img src=\"systems/mr-entre-ruinas/assets/pregenerados/ivan-ficha.webp\" alt=\"Iván Ortega\">\n</div>"
+    },
+    "sort": 90000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "manualcontra0000",
+    "name": "Contraportada",
+    "type": "image",
+    "src": "systems/mr-entre-ruinas/assets/portadas/contraportada.webp",
+    "image": {
+     "caption": "Nadie recuerda cómo empezó. Pero todos recuerdan a quién dejaron atrás."
+    },
+    "title": {
+     "show": false,
+     "level": 1
+    },
+    "sort": 91000,
+    "ownership": {
+     "default": -1
+    }
+   }
+  ],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {}
+ },
+ {
+  "_id": "mundoViolento000",
+  "name": "Un Mundo Violento · Suplemento de campaña",
+  "pages": [
+   {
+    "_id": "mundoportada0000",
+    "name": "Portada",
+    "type": "image",
+    "src": "systems/mr-entre-ruinas/assets/portadas/mundo-violento.webp",
+    "image": {
+     "caption": "Un Mundo Violento. Historias de supervivencia en un mundo roto."
+    },
+    "title": {
+     "show": false,
+     "level": 1
+    },
+    "sort": 1000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag00000000",
+    "name": "Introducción",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<h2>1. Introducción</h2>\n<p>Historias de supervivencia en el mundo de Un Mundo Violento.</p>\n<p>Entre Ruinas es un suplemento narrativo para el sistema de juego de la Voz. Está inspirado en la ficción sonora Un Mundo Violento, pero no pretende recrear la historia de sus protagonistas. Este juego trata sobre otras personas, otros refugios, otras carreteras, otras transmisiones, y otras historias de supervivencia. Mientras los protagonistas del podcast sobreviven en alguna parte del mundo, vosotros intentaréis sobrevivir aquí.</p>\n<h2>2. El mundo no terminó de golpe</h2>\n<p>El mundo no terminó de golpe. Nadie recuerda exactamente cuándo empezó. Algunos dicen que fue la explosión. Otros hablan de un apagón. Otros aseguran que la violencia ya estaba dentro de la gente y simplemente dejó de esconderse.</p>\n<p>Lo único seguro es esto: el mundo dejó de funcionar. Las ciudades se llenaron de incendios, las carreteras quedaron abandonadas, las radios empezaron a emitir mensajes contradictorios, y la gente dejó de confiar en los demás.</p>\n<h2>3. ¿Qué tipo de historias cuenta Entre Ruinas?</h2>\n<p>Entre Ruinas no trata sobre héroes. No trata sobre salvar el mundo, ni sobre encontrar una cura, ni sobre derrotar monstruos.</p>\n<p>Trata sobre personas agotadas, comunidades rotas, vínculos que se tensan, y supervivientes intentando seguir adelante mientras todo se desmorona. Las historias de Entre Ruinas son íntimas, tensas, emocionales, incómodas, y profundamente humanas.</p>\n<p>El verdadero peligro rara vez son los violentos. El verdadero peligro es el miedo, el hambre, la culpa, el aislamiento, y lo que las personas son capaces de hacer para sobrevivir.</p>\n<h2>4. Cómo usar este suplemento</h2>\n<p>Entre Ruinas no es una cronología cerrada. No explica toda la verdad, no responde todas las preguntas, y no define exactamente qué ocurrió.</p>\n<p>Este suplemento está pensado para generar historias, crear tensión, inspirar campañas, y ayudar a que cada mesa construya su propia versión del colapso.</p>\n<p>Todo lo que aparece aquí puede ser cierto, puede ser propaganda, puede ser un rumor, o puede ser simplemente una mentira. Y eso forma parte de la ambientación.</p>\n</div>"
+    },
+    "sort": 2000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag01000000",
+    "name": "El Colapso",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p class=\"er-cita-final\">La violencia empezó antes de que nadie se diera cuenta.</p>\n<h2>6. La Explosión</h2>\n<p>La mayoría de los supervivientes recuerda dónde estaba cuando ocurrió, aunque no todos vieron lo mismo. Algunos hablan de una explosión lejana, un pulso de luz, interferencias en la radio, apagones, ruido blanco, o un zumbido imposible.</p>\n<p>Después llegaron el caos, las primeras agresiones, las carreteras bloqueadas, y los incendios. En menos de una semana, la normalidad había desaparecido.</p>\n<h2>7. La Violencia</h2>\n<p>Nadie sabe exactamente qué provoca la violencia. No funciona como una enfermedad normal, y no todos reaccionan igual.</p>\n<p>Algunas personas pierden el control emocional, sufren ataques paranoicos, reaccionan con agresividad extrema, o parecen incapaces de contener impulsos violentos. Otras se derrumban emocionalmente, quedan bloqueadas, o simplemente desaparecen.</p>\n<p>Y algunas personas parecen resistir.</p>\n<h2>8. Los Inmunes</h2>\n<p>Existen rumores sobre personas capaces de soportar la violencia sin perder el control. Nadie sabe por qué. Algunas teorías hablan de genética, exposición previa, frecuencias de radio, traumas, medicamentos, o simple azar.</p>\n<p>Los inmunes generan miedo. Muchas comunidades los buscan, los odian, o los consideran peligrosos. Otros creen que son la única esperanza.</p>\n<h2>9. El Silencio</h2>\n<p>Internet cayó rápido. La televisión desapareció. Los teléfonos dejaron de funcionar. Las redes murieron. Pero las radios siguieron ahí, a veces emitiendo ayuda, propaganda, amenazas, música, o simplemente ruido. En el mundo de Entre Ruinas, las voces importan.</p>\n<h2>10. Lo que nadie entiende</h2>\n<p>Cada comunidad tiene su propia teoría. Algunos creen que todo empezó como un experimento, que fue una guerra, que la violencia estaba dormida, que las radios transportan algo, o que el mundo anterior merecía desaparecer.</p>\n<p>No existe una verdad confirmada. Y quizá nunca exista.</p>\n</div>"
+    },
+    "sort": 3000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag02000000",
+    "name": "El Mundo Roto",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p class=\"er-cita-final\">Todavía hay gente intentando vivir aquí.</p>\n<h2>12. Ciudades Muertas</h2>\n<p>Las grandes ciudades fueron las primeras en caer. Cuando desaparecieron la electricidad, los suministros, la policía, y las comunicaciones, la violencia se volvió imposible de contener.</p>\n<p>Ahora las ciudades son ruinas, incendios apagados, edificios vacíos, carreteras colapsadas, y ecos de vidas anteriores. Pero todavía queda gente.</p>\n<h2>13. Carreteras Vacías</h2>\n<p>Moverse es peligroso. Las carreteras están llenas de vehículos abandonados, saqueadores, comunidades hostiles, controles improvisados, y personas desesperadas. Viajar siempre implica riesgo, agotamiento, y la posibilidad de no volver.</p>\n<h2>14. Hambre</h2>\n<p>La comida escasea. Los supermercados llevan meses vacíos. El hambre rompe relaciones, destruye comunidades, y obliga a tomar decisiones horribles. Muchas veces, la desesperación empieza en el estómago.</p>\n<h2>15. Ruido y Silencio</h2>\n<p>El sonido importa. La gente escucha pasos, radios lejanas, golpes, respiraciones, disparos, generadores, o voces en edificios vacíos.</p>\n<p>Pero el silencio puede ser todavía peor. Porque cuando todo queda en silencio, nadie sabe qué está esperando.</p>\n</div>"
+    },
+    "sort": 4000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag03000000",
+    "name": "Comunidades",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p class=\"er-cita-final\">Nadie sobrevive solo.</p>\n<h2>17. Los refugios</h2>\n<p>Tarde o temprano, toda campaña gira alrededor de un refugio. Puede ser un edificio ocupado, una gasolinera, una estación, un supermercado, un ferry, un parking, o una urbanización aislada. Pero ningún refugio es realmente seguro.</p>\n<h2>18. Qué define una comunidad</h2>\n<p>Toda comunidad se define por cuatro cosas:</p>\n<ul>\n<li><strong>Qué necesita</strong> — Comida, medicinas, combustible, seguridad o información.</li>\n<li><strong>Qué teme</strong> — La violencia, el hambre, otras comunidades o el aislamiento.</li>\n<li><strong>Qué está dispuesta a sacrificar</strong> — Libertad, personas, secretos o moralidad.</li>\n<li><strong>Qué oculta</strong> — Toda comunidad esconde algo.</li>\n</ul>\n<h2>19. Tipos de comunidades</h2>\n<p>Entre Ruinas contempla varios tipos de comunidad, cada una con su propia lógica de supervivencia:</p>\n<ul>\n<li><strong>Refugios cerrados</strong> — Nadie entra. Nadie sale.</li>\n<li><strong>Comunidades violentas</strong> — Sobreviven saqueando.</li>\n<li><strong>Cultos</strong> — Interpretan la violencia como algo espiritual.</li>\n<li><strong>Ciudadelas</strong> — Pequeños territorios organizados mediante fuerza y control.</li>\n<li><strong>Campamentos móviles</strong> — Nunca permanecen demasiado tiempo en el mismo lugar.</li>\n<li><strong>Estaciones de radio</strong> — Comunidades construidas alrededor de transmisiones.</li>\n</ul>\n</div>"
+    },
+    "sort": 5000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag04000000",
+    "name": "Los Violentos",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p class=\"er-cita-final\">Siguen siendo personas.</p>\n<h2>21. No son monstruos</h2>\n<p>Los violentos no son zombis. Siguen siendo personas. Eso es lo que los vuelve aterradores.</p>\n<p>A veces hablan, lloran, recuerdan cosas, o parecen conscientes de lo que hacen. Y un segundo después, atacan.</p>\n<h2>22. Estados de violencia</h2>\n<p>La violencia se manifiesta de formas distintas:</p>\n<ul>\n<li><strong>Rabia</strong> — Ataques impulsivos y brutales.</li>\n<li><strong>Paranoia</strong> — Miedo constante y agresividad preventiva.</li>\n<li><strong>Obsesión</strong> — Conductas repetitivas y peligrosas.</li>\n<li><strong>Histeria colectiva</strong> — Multitudes que reaccionan violentamente.</li>\n<li><strong>Colapso emocional</strong> — Personas incapaces de controlar el miedo o la desesperación.</li>\n</ul>\n<h2>Recuperaciones parciales</h2>\n<p>Algunas personas parecen recuperarse temporalmente. Eso genera culpa, dudas, miedo, y conflictos morales, porque nadie sabe si realmente pueden volver.</p>\n</div>"
+    },
+    "sort": 6000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag05000000",
+    "name": "Las Voces",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p class=\"er-cita-final\">La radio nunca se calló.</p>\n<h2>24. El último hilo del mundo</h2>\n<p>Las radios conectan lugares aislados. Transmiten rumores, llamadas de auxilio, música, amenazas, noticias falsas, y mensajes desesperados. Muchas veces, escuchar puede ser más peligroso que no saber.</p>\n<h2>25. Tipos de transmisiones</h2>\n<p>Entre las señales que todavía recorren el dial se pueden encontrar:</p>\n<ul>\n<li>Peticiones de ayuda.</li>\n<li>Emisiones militares.</li>\n<li>Señales pirata.</li>\n<li>Mensajes grabados.</li>\n<li>Confesiones.</li>\n<li>Música repetida.</li>\n<li>Frecuencias extrañas.</li>\n<li>Ruido blanco.</li>\n</ul>\n</div>"
+    },
+    "sort": 7000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag06000000",
+    "name": "Hacer Campañas",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Consejos prácticos para dirigir campañas de Entre Ruinas ambientadas en el mundo de Un Mundo Violento.</p>\n<h2>27. Seguir adelante</h2>\n<p>No preparéis tramas. Entre Ruinas funciona mejor cuando las historias emergen, los personajes improvisan, y las consecuencias transforman la campaña.</p>\n<p>Preparad lugares, problemas, comunidades, amenazas, y preguntas incómodas. Pero no escribáis una historia cerrada.</p>\n<h2>28. El corazón de la campaña</h2>\n<p>Las campañas de Entre Ruinas funcionan mejor cuando giran alrededor de un refugio, una carretera, una transmisión, una comunidad, o una búsqueda personal. Los objetivos pequeños suelen generar las mejores historias.</p>\n</div>"
+    },
+    "sort": 8000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag07000000",
+    "name": "Temporadas",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p class=\"er-cita-final\">Toda historia deja cicatrices.</p>\n<h2>30. Estructura recomendada</h2>\n<p>Una temporada ideal tiene 6 episodios. Cada episodio debería centrarse en un personaje distinto, cambiar relaciones, aumentar la tensión, y dejar consecuencias permanentes.</p>\n<h2>31. El mundo cambia</h2>\n<p>Después de cada temporada, las comunidades evolucionan, el refugio cambia, la esperanza disminuye, y los personajes se transforman. Nadie atraviesa el colapso sin romperse.</p>\n</div>"
+    },
+    "sort": 9000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag08000000",
+    "name": "Herramientas de la Voz",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p class=\"er-cita-final\">Preguntas para cuando todo se rompe.</p>\n<h2>33. Preguntas incómodas</h2>\n<ul>\n<li>¿Quién está mintiendo?</li>\n<li>¿Qué parte del refugio ya no es segura?</li>\n<li>¿Qué escucháis en la radio?</li>\n<li>¿Quién no debería estar aquí?</li>\n<li>¿Quién está a punto de perder el control?</li>\n<li>¿Qué secreto acaba de salir a la luz?</li>\n<li>¿A quién abandonaríais?</li>\n<li>¿Qué estáis fingiendo no ver?</li>\n</ul>\n<h2>34. Escenas iniciales</h2>\n<ul>\n<li>Una puerta golpeada durante la noche.</li>\n<li>Una transmisión pidiendo ayuda.</li>\n<li>Un incendio lejano.</li>\n<li>Un generador que deja de funcionar.</li>\n<li>Una discusión que escala demasiado rápido.</li>\n<li>Un coche llegando al refugio.</li>\n<li>Un cadáver en la carretera.</li>\n<li>Alguien llamando por vuestro nombre.</li>\n</ul>\n</div>"
+    },
+    "sort": 10000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag09000000",
+    "name": "Escenarios",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p class=\"er-cita-final\">Historias entre ruinas: tres situaciones listas para usar en cualquier campaña.</p>\n<h2>36. El supermercado</h2>\n<p><strong>Situación:</strong> Quedan suministros. Pero no sois los únicos que lo sabéis.</p>\n<p><strong>Pregunta incómoda:</strong> ¿Quién merece comer?</p>\n<h2>37. La emisora abandonada</h2>\n<p><strong>Situación:</strong> Una radio sigue emitiendo música.</p>\n<p><strong>Pregunta incómoda:</strong> ¿Quién sigue ahí dentro?</p>\n<h2>38. La gasolinera encendida</h2>\n<p><strong>Situación:</strong> Hay luz. Y eso nunca es buena señal.</p>\n<p><strong>Pregunta incómoda:</strong> ¿Por qué alguien quiere ser encontrado?</p>\n</div>"
+    },
+    "sort": 11000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag10000000",
+    "name": "Rumores sobre el mundo",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p class=\"er-cita-final\">Nadie sabe qué es verdad.</p>\n<ul>\n<li>Dicen que algunas ciudades siguen funcionando.</li>\n<li>Dicen que el ejército todavía controla zonas seguras.</li>\n<li>Dicen que las radios transmiten algo más que sonido.</li>\n<li>Dicen que los violentos recuerdan cosas.</li>\n<li>Dicen que existe una cura.</li>\n<li>Dicen que el mar está lleno de barcos abandonados.</li>\n<li>Dicen que algunas personas nunca se vieron afectadas.</li>\n<li>Dicen que todavía queda música en la radio.</li>\n</ul>\n</div>"
+    },
+    "sort": 12000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "mundopag11000000",
+    "name": "Epílogo — Todavía seguimos aquí",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>El mundo ya no funciona. Las ciudades se rompieron. Las carreteras murieron. Y la violencia cambió a las personas.</p>\n<p>Pero todavía quedan voces. Todavía quedan refugios. Todavía quedan recuerdos.</p>\n<p>Y mientras alguien siga hablando al otro lado de la radio, la historia aún no ha terminado.</p>\n</div>"
+    },
+    "sort": 13000,
+    "ownership": {
+     "default": -1
+    }
+   }
+  ],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {}
+ },
+ {
+  "_id": "refugiosSuplemen",
+  "name": "Refugios · Suplemento",
+  "pages": [
+   {
+    "_id": "refugioportada00",
+    "name": "Portada",
+    "type": "image",
+    "src": "systems/mr-entre-ruinas/assets/portadas/refugios.webp",
+    "image": {
+     "caption": "Refugios. Suplemento narrativo para comunidades al borde del colapso."
+    },
+    "title": {
+     "show": false,
+     "level": 1
+    },
+    "sort": 1000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "refugiopag000000",
+    "name": "Introducción",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<h2>Un refugio no es un lugar seguro</h2>\n<p>El mundo se rompió hace tiempo. Las ciudades cayeron, las carreteras murieron, y la violencia cambió a las personas casi tanto como cambió el paisaje. Y aun así, contra todo pronóstico, la gente sigue intentando construir lugares donde dormir sin miedo.</p>\n<p>Eso son los refugios. No son fortalezas. No son bases. No son civilización reconstruida. Son, simplemente, personas agotadas intentando conservar algo humano entre las ruinas.</p>\n<h2>¿Qué aporta este suplemento?</h2>\n<p>Refugios amplía las reglas de Entre Ruinas para campañas centradas en comunidades supervivientes, en los conflictos internos que las atraviesan, en el desgaste colectivo que las erosiona, en el liderazgo — siempre disputado—, en la escasez que lo condiciona todo, en la convivencia forzosa entre personas que no se habrían elegido, y en la lenta transformación de un lugar cualquiera en algo parecido a un hogar. Concretamente, este suplemento introduce:</p>\n<ul>\n<li>La creación de refugios.</li>\n<li>La gestión narrativa de comunidades.</li>\n<li>El Estrés colectivo.</li>\n<li>Las Marcas del refugio.</li>\n<li>Las expediciones.</li>\n<li>Las amenazas persistentes.</li>\n<li>La evolución por temporadas.</li>\n<li>Y herramientas para convertir el refugio en el corazón emocional de la campaña.</li>\n</ul>\n<h2>Filosofía del refugio</h2>\n<p>El refugio no existe para protegeros del mundo. Existe para mostrar cuánto cuesta seguir siendo personas. Un refugio en Entre Ruinas debe sentirse improvisado, agotado, lleno de tensiones, emocionalmente frágil, y constantemente cerca del colapso.</p>\n<p>El objetivo no es construir una base perfecta. El objetivo es sobrevivir juntos sin destruiros antes.</p>\n</div>"
+    },
+    "sort": 2000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "refugiopag010000",
+    "name": "Capítulo 1 — Creación del refugio",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>La creación del refugio se realiza entre todos los jugadores durante la sesión 0. No hace falta preparar mapas detallados ni calcular recursos exactos: lo importante es responder, entre todos, a un puñado de preguntas que definen el tono de la comunidad. El proceso se resuelve en cinco pasos.</p>\n<h2>Paso 1 — ¿Qué es este lugar?</h2>\n<p>Elegid, entre todos, el tipo de refugio que ocupa el grupo. Cada elección trae consigo sus propias ventajas y sus propios problemas latentes.</p>\n<ul>\n<li><strong>Supermercado</strong> — Todavía quedan recursos escondidos. Problema: demasiadas entradas.</li>\n<li><strong>Gasolinera</strong> — Acceso a combustible y carretera. Problema: todo el mundo puede verla.</li>\n<li><strong>Ferry abandonado</strong> — Aislado y relativamente seguro. Problema: difícil abandonar el lugar rápidamente.</li>\n<li><strong>Parking subterráneo</strong> — Oculto y resistente. Problema: oscuridad, humedad y mala ventilación.</li>\n<li><strong>Urbanización cerrada</strong> — Espacio y viviendas separadas. Problema: conflictos entre vecinos.</li>\n<li><strong>Estación de radio</strong> — Comunicación con otros supervivientes. Problema: las transmisiones atraen atención.</li>\n<li><strong>Hospital improvisado</strong> — Acceso médico parcial. Problema: heridos constantes y medicinas insuficientes.</li>\n</ul>\n<h2>Paso 2 — ¿Qué mantiene vivo el refugio?</h2>\n<p>Elegid aquello sin lo cual la comunidad colapsaría: un generador, un pozo, un médico, una emisora, un huerto, una persona concreta, combustible, una ruta de suministros, un vehículo, paneles solares, o una antena. Si eso desaparece, el refugio entra inmediatamente en Crisis.</p>\n<h2>Paso 3 — ¿Qué oculta la comunidad?</h2>\n<p>Toda comunidad esconde algo. Siempre. Elegid un secreto colectivo: que esconden a alguien violento, que expulsaron a alguien injustamente, que apenas queda comida, que alguien manipula las transmisiones, que parte del refugio ya no es segura, que un grupo quiere tomar el control, que alguien desapareció y nadie habla de ello, que la comunidad depende del saqueo, o que están ocultando una infección. El secreto debe poder destruir relaciones cuando salga a la luz.</p>\n<h2>Paso 4 — ¿Qué teme este lugar?</h2>\n<p>Elegid el miedo principal del refugio: el hambre, las invasiones, quedarse aislados, los incendios, quedarse sin combustible, la violencia interna, otra comunidad, el invierno, las transmisiones de radio, o perder el control. Este miedo debe aparecer constantemente durante la campaña, como un trasfondo que nunca termina de disolverse.</p>\n<h2>Paso 5 — ¿Quién manda realmente?</h2>\n<p>Toda comunidad tiene una estructura de poder, aunque nadie quiera admitirlo. Elegid el tipo de liderazgo que gobierna el refugio.</p>\n<ul>\n<li><strong>Liderazgo fuerte</strong> — Una persona toma las decisiones.</li>\n<li><strong>Consejo</strong> — Varias personas discuten constantemente entre ellas.</li>\n<li><strong>Supervivencia caótica</strong> — Nadie tiene verdadero control.</li>\n<li><strong>Control violento</strong> — La comunidad se mantiene unida mediante el miedo.</li>\n<li><strong>Dependencia emocional</strong> — Todos siguen a alguien porque necesitan creer en él.</li>\n</ul>\n</div>"
+    },
+    "sort": 3000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "refugiopag020000",
+    "name": "Capítulo 2 — La hoja del refugio",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>El refugio tiene sus propios valores narrativos, tan reales como los de cualquier personaje. Todos comienzan en 2, con un máximo de 5 y un mínimo de 0.</p>\n<h2>Seguridad</h2>\n<p>La Seguridad representa la protección del refugio, su vigilancia, sus barreras y su capacidad defensiva. Con Seguridad alta, el refugio resiste ataques y amenazas menores; con Seguridad baja, se vuelve vulnerable. Cuando la Seguridad llega a 0, el refugio deja de ser seguro, y la Voz debe introducir inmediatamente una invasión, una ruptura, una infiltración, o alguna otra amenaza imposible de ignorar.</p>\n<h2>Suministros</h2>\n<p>Los Suministros representan la comida, el agua, las medicinas, el combustible y las herramientas de la comunidad. Con Suministros bajos, la comunidad empieza a deteriorarse rápidamente; cuando llegan a 0, la gente empieza a pasar hambre, todos los personajes ganan 1 Estrés al inicio de cada episodio, y las discusiones se vuelven frecuentes.</p>\n<h2>Moral</h2>\n<p>La Moral representa la esperanza, la cohesión y las ganas de seguir adelante. Con Moral alta, todavía existe humanidad reconocible en el grupo; con Moral baja, la desesperación domina el refugio. Cuando la Moral llega a 0, la comunidad entra en colapso emocional, y la Voz puede introducir motines, violencia interna, suicidios, huidas, traiciones, o paranoia colectiva.</p>\n<h2>Ruido</h2>\n<p>El Ruido representa la visibilidad del refugio: su actividad, sus transmisiones, su movimiento, sus incendios, sus generadores. Cuanto más alto sea, más fácil será que alguien encuentre el refugio. Cuando el Ruido llega a 5, alguien encuentra el refugio. Siempre.</p>\n<h2>Confianza</h2>\n<p>La Confianza representa la unidad, la cooperación y la estabilidad social de la comunidad. Con Confianza baja, la comunidad empieza a fragmentarse; cuando llega a 0, nadie cree ya en nadie, y toda escena social importante genera automáticamente tensión.</p>\n<h2>Estrés del refugio</h2>\n<p>Además del Estrés individual de cada personaje, el refugio también posee su propio Estrés colectivo. El refugio tiene 6 espacios de Estrés.</p>\n</div>"
+    },
+    "sort": 4000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "refugiopag030000",
+    "name": "Capítulo 3 — Estrés y colapso",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<h2>Cuándo gana Estrés el refugio</h2>\n<p>El refugio gana 1 Estrés cuando:</p>\n<ul>\n<li>Muere alguien importante.</li>\n<li>Falta comida.</li>\n<li>Llega demasiada gente.</li>\n<li>Una expedición fracasa.</li>\n<li>Alguien roba recursos.</li>\n<li>Ocurre violencia interna.</li>\n<li>Desaparece una persona.</li>\n<li>El refugio queda expuesto.</li>\n<li>Una transmisión amenaza a la comunidad.</li>\n<li>Los personajes toman decisiones terribles.</li>\n</ul>\n<h2>Crisis del refugio</h2>\n<p>Cuando el refugio llena todos sus espacios de Estrés, la comunidad sufre una Crisis. En ese momento, la Voz realiza inmediatamente un Movimiento de Comunidad.</p>\n<h2>Movimientos de comunidad</h2>\n<p>Entre las opciones disponibles, la Voz puede:</p>\n<ul>\n<li>Hacer que alguien robe suministros.</li>\n<li>Enfrentar a dos grupos entre sí.</li>\n<li>Expulsar a un miembro.</li>\n<li>Hacer aparecer a un líder radical.</li>\n<li>Dejar que una parte del refugio deje de ser segura.</li>\n<li>Hacer desaparecer a alguien.</li>\n<li>Provocar un incendio.</li>\n<li>Dejar que alguien abra las puertas.</li>\n<li>Permitir que una facción tome el control.</li>\n<li>Hacer que una transmisión revele un secreto.</li>\n<li>Convertir el miedo en violencia.</li>\n</ul>\n<p>Después de la Crisis, el Estrés del refugio vuelve a 0. Pero el refugio gana, a cambio, una Marca permanente.</p>\n<h2>Marcas del refugio</h2>\n<p>Las Marcas representan cómo cambia la comunidad tras cada Crisis. Un refugio nunca sale intacto del colapso.</p>\n<ul>\n<li>«Nadie duerme tranquilo.»</li>\n<li>«Las armas siempre están visibles.»</li>\n<li>«Ya no aceptan desconocidos.»</li>\n<li>«La radio nunca se apaga.»</li>\n<li>«Todo el mundo sospecha de todos.»</li>\n<li>«Nadie habla del ala norte.»</li>\n<li>«Las puertas se cierran antes del anochecer.»</li>\n<li>«Siempre hay alguien vigilando.»</li>\n<li>«Las discusiones terminan en violencia.»</li>\n<li>«Los niños ya no juegan.»</li>\n</ul>\n<p>Las Marcas del refugio deben afectar a las escenas, generar tensión, modificar las relaciones entre personajes, y cambiar el tono general del refugio.</p>\n</div>"
+    },
+    "sort": 5000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "refugiopag040000",
+    "name": "Capítulo 4 — Vida entre las ruinas",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<h2>Escenas de refugio</h2>\n<p>No todas las escenas deben tratar sobre peligro. Las escenas tranquilas son fundamentales: son las que recuerdan a los personajes por qué siguen vivos. Durante ellas, los personajes pueden cocinar, dormir, discutir, reparar cosas, compartir recuerdos, escuchar la radio, cortarse el pelo, fumar juntos, llorar, reír, limpiar sangre, enterrar a alguien, jugar a cartas, mirar el exterior, o simplemente hablar sobre el pasado.</p>\n<h2>Recuperación</h2>\n<p>Durante una escena de refugio, un personaje puede elegir una de las siguientes opciones:</p>\n<ul>\n<li>Borrar 1 Estrés.</li>\n<li>Fortalecer un vínculo.</li>\n<li>Revelar una verdad.</li>\n<li>Recuperar temporalmente la esperanza.</li>\n<li>Eliminar temporalmente una Marca.</li>\n<li>Mejorar la Moral en 1.</li>\n<li>Reducir el Estrés del refugio en 1.</li>\n</ul>\n<h2>Roles dentro del refugio</h2>\n<p>Los personajes pueden asumir responsabilidades narrativas dentro de la comunidad. No son clases: son cargas.</p>\n<ul>\n<li><strong>La Voz de la Radio</strong> — Mantiene contacto con el exterior.</li>\n<li><strong>El Vigilante</strong> — Siempre está despierto demasiado tiempo.</li>\n<li><strong>La Médica</strong> — Decide quién recibe tratamiento.</li>\n<li><strong>El Cocinero</strong> — Administra la comida.</li>\n<li><strong>El Mecánico</strong> — Mantiene vivo el generador.</li>\n<li><strong>Quien Decide Quién Entra</strong> — El trabajo más horrible del refugio.</li>\n<li><strong>Quien Entierra a los Muertos</strong> — Nadie quiere hacerlo demasiado tiempo.</li>\n</ul>\n</div>"
+    },
+    "sort": 6000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "refugiopag050000",
+    "name": "Capítulo 5 — Expediciones",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Toda comunidad necesita salir al exterior tarde o temprano. Las expediciones son peligrosas, agotadoras, y emocionalmente destructivas.</p>\n<h2>Objetivos de una expedición</h2>\n<ul>\n<li><strong>Conseguir suministros</strong> — Comida, medicinas, combustible.</li>\n<li><strong>Buscar personas</strong> — Desaparecidos, familiares o supervivientes.</li>\n<li><strong>Investigar transmisiones</strong> — Radios, señales o llamadas de auxilio.</li>\n<li><strong>Explorar</strong> — Nuevos refugios o rutas.</li>\n<li><strong>Robar</strong> — A otras comunidades.</li>\n<li><strong>Huir</strong> — Porque el refugio ya no se puede mantener.</li>\n</ul>\n<h2>Preguntas antes de salir</h2>\n<p>Antes de que el grupo parta, la Voz debería plantear a la mesa algunas de estas preguntas:</p>\n<ul>\n<li>¿Quién se queda atrás?</li>\n<li>¿Qué necesita realmente el refugio?</li>\n<li>¿Qué no estáis diciendo?</li>\n<li>¿Quién no debería venir?</li>\n<li>¿Qué pasa si no regresáis?</li>\n</ul>\n<h2>Complicaciones en expediciones</h2>\n<p>Entre las complicaciones posibles, la Voz puede introducir que el vehículo falla, que se escuchan disparos, que alguien os sigue, que una transmisión dice vuestro nombre, que encontráis supervivientes, que alguien desaparece, que aparece otra comunidad, que alguien pierde el control, que encontráis algo imposible de ignorar, o que descubrís que alguien os mintió.</p>\n</div>"
+    },
+    "sort": 7000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "refugiopag060000",
+    "name": "Capítulo 6 — Otras comunidades",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<p>Toda campaña debería incluir otros refugios. Ninguno de ellos debe sentirse completamente seguro.</p>\n<h2>Crear otra comunidad</h2>\n<p>Para definir una comunidad rival o vecina, basta con responder qué necesitan, qué temen, qué ocultan, y qué están dispuestos a sacrificar.</p>\n<h2>Tipos de comunidades</h2>\n<ul>\n<li><strong>Refugios cerrados</strong> — Nadie entra.</li>\n<li><strong>Comunidades violentas</strong> — Sobreviven saqueando.</li>\n<li><strong>Cultos</strong> — Interpretan la violencia como algo espiritual.</li>\n<li><strong>Ciudadelas</strong> — Controlan territorio mediante la fuerza.</li>\n<li><strong>Campamentos móviles</strong> — Nunca permanecen demasiado tiempo en el mismo sitio.</li>\n<li><strong>Comunidades de radio</strong> — Viven alrededor de sus transmisiones.</li>\n</ul>\n</div>"
+    },
+    "sort": 8000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "refugiopag070000",
+    "name": "Capítulo 7 — Relojes y temporadas",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<h2>Relojes narrativos</h2>\n<p>Los relojes representan amenazas persistentes que se ciernen sobre el refugio. No necesitan números complejos: solo una progresión narrativa clara.</p>\n<ul>\n<li>«El generador va a morir.»</li>\n<li>«La comunidad vecina prepara algo.»</li>\n<li>«La radio os ha localizado.»</li>\n<li>«Alguien está enfermando.»</li>\n<li>«El invierno se acerca.»</li>\n<li>«El refugio se está fragmentando.»</li>\n</ul>\n<p>Cada vez que una situación empeora, el reloj avanza. Cuando se completa, la amenaza ocurre.</p>\n<h2>El refugio como personaje</h2>\n<p>El refugio también cuenta su propia historia. Puede cambiar, endurecerse, volverse cruel, perder humanidad, o encontrar pequeñas formas de esperanza. La comunidad debería sentirse distinta al inicio y al final de cada temporada.</p>\n<h2>Temporadas</h2>\n<p>Después de cada temporada, es habitual que el refugio cambie, que alguien se marche, que alguien muera, que aparezcan nuevas normas, que el espacio se deteriore, que la comunidad evolucione, y que el mundo, en conjunto, empeore.</p>\n<h2>Eventos entre temporadas</h2>\n<p>Entre una temporada y la siguiente, pueden ocurrir eventos como que llegue un grupo nuevo, que el invierno destruya parte del refugio, que desaparezcan recursos, que alguien tome el control, que nazca un niño, que la radio deje de emitir, que aparezca una enfermedad, que encontréis otra comunidad, que una parte del refugio colapse, o que alguien regrese cambiado.</p>\n</div>"
+    },
+    "sort": 9000,
+    "ownership": {
+     "default": -1
+    }
+   },
+   {
+    "_id": "refugiopag080000",
+    "name": "Capítulo 8 — Herramientas para la Voz",
+    "type": "text",
+    "title": {
+     "show": true,
+     "level": 1
+    },
+    "text": {
+     "format": 1,
+     "content": "<div class=\"er-manual\">\n<h2>Preguntas para la Voz</h2>\n<p>Cuando el refugio empieza a romperse, estas preguntas pueden ayudar a la Voz a encontrar la siguiente escena:</p>\n<ul>\n<li>¿Qué parte del refugio ya no parece un hogar?</li>\n<li>¿Quién está fingiendo que todo va bien?</li>\n<li>¿Quién está a punto de explotar?</li>\n<li>¿Qué norma acaba de aparecer?</li>\n<li>¿Quién duerme peor últimamente?</li>\n<li>¿Qué habitación evita todo el mundo?</li>\n<li>¿Quién está empezando a perder la esperanza?</li>\n<li>¿Qué sonido ya nadie soporta escuchar?</li>\n<li>¿Quién quiere abandonar el refugio?</li>\n<li>¿Qué sacrificio parece inevitable?</li>\n</ul>\n<h2>La última regla</h2>\n<p class=\"er-cita-final\">No intentéis construir un refugio perfecto. Intentad construir un lugar al que todavía merezca la pena volver.</p>\n</div>"
+    },
+    "sort": 10000,
+    "ownership": {
+     "default": -1
+    }
+   }
+  ],
+  "ownership": {
+   "default": 0
+  },
+  "flags": {}
+ }
+]

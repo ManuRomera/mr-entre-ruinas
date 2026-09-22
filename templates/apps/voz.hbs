@@ -1,0 +1,121 @@
+<div class="er-cuerpo er-cuerpo-voz">
+  {{!-- ═══ Siempre a la vista: episodio, Voz, fase y ritmo ═══ --}}
+  <header class="er-voz-cabecera">
+    <div class="er-voz-fila">
+      <div class="er-voz-retrato">
+        {{#if voz}}<img src="{{voz.img}}" alt="">{{else}}<i class="fa-solid fa-microphone-lines-slash"></i>{{/if}}
+      </div>
+      <div class="er-voz-datos">
+        <span class="er-cinta">Temporada {{e.temporada}} · Episodio {{e.episodio}}/6</span>
+        <label class="er-voz-selector">
+          <span>La Voz</span>
+          <select name="vozElegida" aria-label="Quién es la Voz">
+            <option value="">— Nadie todavía —</option>
+            {{#each candidatos}}<option value="{{uuid}}" {{#if (eq uuid ../e.voz)}}selected{{/if}}>{{nombre}}{{#if yaFue}} · ya fue la Voz{{/if}}</option>{{/each}}
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <ol class="er-fases" aria-label="Estructura del episodio">
+      {{#each fases}}
+      <li><button type="button" class="{{#if activa}}activa{{/if}} {{#if hecha}}hecha{{/if}}" data-action="fase" data-fase="{{clave}}" data-tooltip="{{texto}}">{{titulo}}</button></li>
+      {{/each}}
+    </ol>
+    <p class="er-fase-texto">{{faseActual.texto}}</p>
+
+    <div class="er-voz-acciones">
+      <button type="button" class="er-boton" data-action="corte" data-tooltip="Cualquiera puede pedirlo (M 13.2)"><i class="fa-solid fa-scissors"></i> Corte</button>
+      <button type="button" class="er-boton {{#if escenaRefugio}}activo{{/if}}" data-action="refugio">
+        <i class="fa-solid fa-mug-hot"></i> {{#if escenaRefugio}}Cerrar refugio{{else}}Escena de refugio{{/if}}</button>
+      {{#if ultimaFase}}
+      <button type="button" class="er-boton er-boton-principal" data-action="fin"><i class="fa-solid fa-radio"></i> Fin del episodio</button>
+      {{else}}
+      <button type="button" class="er-boton er-boton-principal" data-action="siguienteFase">Siguiente fase <i class="fa-solid fa-arrow-right"></i></button>
+      {{/if}}
+    </div>
+
+    <nav class="tabs er-pestanas" aria-label="Secciones del panel">
+      {{#each tabs}}
+      <a data-action="tab" data-group="{{group}}" data-tab="{{id}}" class="{{cssClass}}"><i class="{{icon}}" inert></i> <span>{{label}}</span></a>
+      {{/each}}
+    </nav>
+  </header>
+
+  <main class="er-principal">
+    {{!-- Episodio --}}
+    <section class="tab {{tabs.episodio.cssClass}}" data-group="voz" data-tab="episodio">
+      <h3 class="er-cinta">Preparación</h3>
+      <p class="er-nota">Cuatro elementos sueltos bastan. No escribas una trama cerrada. <small>M 11</small></p>
+      {{#each preparacion}}
+      <label class="er-campo">{{titulo}}
+        <div class="er-con-boton">
+          <input type="text" name="{{campo}}" value="{{valor}}">
+          <button type="button" class="er-boton-mini" data-action="azar" data-campo="{{campo}}" data-lista="{{lista}}" data-tooltip="Un ejemplo del libro"><i class="fa-solid fa-dice"></i></button>
+        </div>
+      </label>
+      {{/each}}
+      <label class="er-campo">Cliffhanger <span class="er-tenue">(para cerrar)</span>
+        <textarea name="cliffhanger" rows="2" placeholder="Una transmisión extraña, unos golpes en la puerta…">{{e.cliffhanger}}</textarea>
+      </label>
+
+      <h3 class="er-cinta">Escenarios listos <small>V 35</small></h3>
+      <div class="er-escenarios">
+        {{#each escenarios}}
+        <article class="er-tarjeta er-escenario">
+          <h4>{{titulo}}</h4>
+          <p>{{situacion}}</p>
+          <p class="er-papel">{{pregunta}}</p>
+          <button type="button" class="er-boton er-boton-suave" data-action="escenario" data-indice="{{i}}"><i class="fa-solid fa-arrow-up"></i> Usar</button>
+        </article>
+        {{/each}}
+      </div>
+
+      <details class="er-bloque" data-memoria="reglas-voz" {{#if seccionReglas}}open{{/if}}>
+        <summary><h3 class="er-cinta">Qué puede y qué no puede hacer la Voz</h3></summary>
+        <div class="er-dos">
+          <ul class="er-lista-simple er-si">{{#each puede.items}}<li>{{this}}</li>{{/each}}</ul>
+          <ul class="er-lista-simple er-no">{{#each noPuede.items}}<li>{{this}}</li>{{/each}}</ul>
+        </div>
+      </details>
+    </section>
+
+    {{!-- Consecuencias --}}
+    <section class="tab {{tabs.consecuencias.cssClass}}" data-group="voz" data-tab="consecuencias">
+      <div class="er-oraculo-cabecera">
+        <h3 class="er-cinta er-tono-coste">Éxito con coste · 7–9</h3>
+        <button type="button" class="er-boton-mini" data-action="consecuencia" data-tooltip="Una al azar"><i class="fa-solid fa-dice"></i></button>
+      </div>
+      <p class="er-nota">La Voz elige una, o inventa otra en su misma línea. <small>M 7.3</small></p>
+      <div class="er-chips">{{#each consecuencias.items}}<button type="button" class="er-chip" data-action="consecuencia" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+
+      <div class="er-oraculo-cabecera">
+        <h3 class="er-cinta er-tono-fallo">Movimientos Duros · 6 o menos</h3>
+        <button type="button" class="er-boton-mini" data-action="consecuencia" data-duro="true" data-tooltip="Uno al azar"><i class="fa-solid fa-dice"></i></button>
+      </div>
+      <p class="er-nota">Empeora la ficción de forma clara e irreversible. <small>M 12</small></p>
+      <div class="er-chips">{{#each duros.items}}<button type="button" class="er-chip er-chip-duro" data-action="consecuencia" data-duro="true" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+    </section>
+
+    {{!-- Oráculos --}}
+    <section class="tab {{tabs.oraculos.cssClass}}" data-group="voz" data-tab="oraculos">
+      <p class="er-nota">Clic en una línea para publicarla; el dado elige una al azar.</p>
+      {{#each oraculos}}
+      <details class="er-bloque" data-memoria="oraculo-{{id}}" {{#if abierto}}open{{/if}}>
+        <summary><h3 class="er-cinta">{{titulo}}</h3></summary>
+        {{#each listas}}
+        <div class="er-oraculo">
+          <button type="button" class="er-boton-mini er-oraculo-dado" data-action="oraculo" data-lista="{{clave}}" data-tooltip="Al azar"><i class="fa-solid fa-dice"></i></button>
+          <details data-memoria="lista-{{clave}}" {{#if abierta}}open{{/if}}>
+            <summary>{{titulo}} <small>{{origen}}</small></summary>
+            <ul class="er-lista-oraculo">
+              {{#each items}}<li><button type="button" data-action="oraculo" data-lista="{{../clave}}" data-texto="{{this}}">{{this}}</button></li>{{/each}}
+            </ul>
+          </details>
+        </div>
+        {{/each}}
+      </details>
+      {{/each}}
+    </section>
+  </main>
+</div>

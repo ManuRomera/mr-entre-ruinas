@@ -1,0 +1,98 @@
+{
+  "id": "mr-entre-ruinas",
+  "title": "MR- Entre Ruinas",
+  "description": "Sistema para Foundry VTT de Entre Ruinas, el juego de rol narrativo de MIDRA sobre supervivientes emocionalmente rotos en un mundo que ya no tiene futuro. Incluye el manual completo, el suplemento de campaña Un Mundo Violento y el suplemento Refugios: fichas de personaje, refugio y comunidad, Panel de la Voz, cuatro pregenerados y todas las tablas.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13.351"
+  },
+  "authors": [
+    {
+      "name": "MIDRA · Midespinas & Amdra",
+      "flags": { "rol": "Juego original, textos, ambientación y arte" }
+    },
+    {
+      "name": "Manu Romera",
+      "url": "https://github.com/ManuRomera",
+      "flags": { "rol": "Implementación para Foundry VTT" }
+    }
+  ],
+  "url": "https://github.com/ManuRomera/mr-entre-ruinas",
+  "manifest": "https://github.com/ManuRomera/mr-entre-ruinas/releases/latest/download/system.json",
+  "download": "https://github.com/ManuRomera/mr-entre-ruinas/releases/latest/download/mr-entre-ruinas.zip",
+  "readme": "https://github.com/ManuRomera/mr-entre-ruinas#readme",
+  "changelog": "https://github.com/ManuRomera/mr-entre-ruinas/blob/main/CHANGELOG.md",
+  "bugs": "https://github.com/ManuRomera/mr-entre-ruinas/issues",
+  "license": "LICENSE",
+  "esmodules": [
+    "mr-entre-ruinas.mjs"
+  ],
+  "styles": [
+    "styles/mr-entre-ruinas.css"
+  ],
+  "languages": [
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "personaje": { "htmlFields": ["notas"] },
+      "pnj": { "htmlFields": ["notas"] },
+      "refugio": { "htmlFields": ["notas"] },
+      "comunidad": { "htmlFields": ["notas"] }
+    }
+  },
+  "packs": [
+    {
+      "name": "manual",
+      "label": "ER · Manual y suplementos",
+      "path": "packs/manual",
+      "type": "JournalEntry",
+      "system": "mr-entre-ruinas",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "pregenerados",
+      "label": "ER · Supervivientes pregenerados",
+      "path": "packs/pregenerados",
+      "type": "Actor",
+      "system": "mr-entre-ruinas",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "tablas",
+      "label": "ER · Tablas de la Voz",
+      "path": "packs/tablas",
+      "type": "RollTable",
+      "system": "mr-entre-ruinas",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "MR- Entre Ruinas",
+      "sorting": "m",
+      "color": "#8a3324",
+      "packs": ["manual", "pregenerados", "tablas"]
+    }
+  ],
+  "grid": {
+    "distance": 1,
+    "units": "m"
+  },
+  "primaryTokenAttribute": "estres",
+  "secondaryTokenAttribute": "caos",
+  "socket": true,
+  "background": "systems/mr-entre-ruinas/assets/portadas/manual.webp",
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/mr-entre-ruinas/assets/portadas/manual.webp",
+      "thumbnail": "systems/mr-entre-ruinas/assets/iconos/refugio.webp"
+    }
+  ]
+}

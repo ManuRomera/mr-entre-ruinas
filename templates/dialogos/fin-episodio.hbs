@@ -1,0 +1,15 @@
+<div class="er-dialogo-cuerpo">
+  <p class="er-intro">Toda sesión termina dejando una pregunta abierta. <small>M 13.5</small></p>
+  <label class="er-campo">Cliffhanger
+    <textarea name="cliffhanger" rows="2" placeholder="Unos golpes en la puerta…" autofocus>{{e.cliffhanger}}</textarea>
+  </label>
+  <div class="er-chips">{{#each cliffhangers}}<button type="button" class="er-chip" data-rellenar="cliffhanger" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+  <label class="er-campo">¿Quién será la Voz en el próximo episodio?
+    <select name="voz">
+      <option value="">— Ya lo decidiremos —</option>
+      {{#each candidatos}}<option value="{{uuid}}" {{#if sugerida}}selected{{/if}}>{{nombre}}{{#if yaFue}} · ya fue la Voz{{/if}}</option>{{/each}}
+    </select>
+  </label>
+  <p class="er-tenue">Las Marcas en suspenso vuelven. Podéis cambiar vuestros vínculos, romper relaciones o revelar secretos.</p>
+  {{#if finTemporada}}<p class="er-aviso-texto"><i class="fa-solid fa-flag-checkered"></i> Es el sexto episodio: termina la temporada. El grupo cambia, el refugio puede desaparecer y el mundo empeora un poco más.</p>{{/if}}
+</div>

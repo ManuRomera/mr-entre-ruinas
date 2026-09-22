@@ -1,0 +1,43 @@
+<div class="er-cuerpo er-cuerpo-secundaria">
+  <header class="er-cabecera">
+    <img class="er-cabecera-img" src="{{actor.img}}" alt="" data-edit="img"
+         data-action="{{#if editando}}editImage{{else}}showPortraitArtwork{{/if}}">
+    <div class="er-cabecera-datos">
+      {{#if editando}}<input class="er-titulo-input" type="text" name="name" value="{{actor.name}}" placeholder="Nombre">
+      {{else}}<h1>{{actor.name}}</h1>{{/if}}
+      <input class="er-concepto-linea" type="text" name="system.concepto" value="{{system.concepto}}" placeholder="Quién es, en una frase" {{disabled (not editable)}}>
+    </div>
+    <div class="er-herramientas er-herramientas-fijas">
+      {{#if editable}}
+      <button type="button" data-action="editar" class="{{#if editando}}activo{{/if}}" data-tooltip="{{#if editando}}Bloquear{{else}}Desbloquear imagen y nombre{{/if}}">
+        <i class="fa-solid {{#if editando}}fa-lock-open{{else}}fa-lock{{/if}}"></i></button>
+      {{/if}}
+    </div>
+  </header>
+
+  <main class="er-principal">
+    <section class="er-violencia {{#if (ne system.estado 'ninguno')}}afectado{{/if}}">
+      <label class="er-campo">La violencia <small>V 21–22</small>
+        <select name="system.estado" {{disabled (not editable)}}>{{selectOptions estados selected=system.estado}}</select>
+      </label>
+      {{#if estadoViolencia.texto}}<p class="er-linea">{{estadoViolencia.texto}}</p>{{/if}}
+      <label class="er-casilla-texto"><input type="checkbox" name="system.recuperacion" {{checked system.recuperacion}} {{disabled (not editable)}}>
+        Recuperación parcial <span class="er-tenue">— nadie sabe si de verdad puede volver.</span></label>
+    </section>
+
+    <div class="er-dos">
+      <label class="er-campo">Qué quiere
+        <textarea name="system.quiere" rows="3" {{disabled (not editable)}}>{{system.quiere}}</textarea>
+      </label>
+      <label class="er-campo">Qué oculta
+        <textarea name="system.oculta" rows="3" {{disabled (not editable)}}>{{system.oculta}}</textarea>
+      </label>
+    </div>
+
+    <details class="er-bloque" data-memoria="diario" {{#if secciones.diario}}open{{/if}}>
+      <summary><h3 class="er-cinta">Notas</h3></summary>
+      {{#if editable}}<prose-mirror name="system.notas" value="{{system.notas}}" toggled>{{{notas}}}</prose-mirror>
+      {{else}}<div class="er-notas">{{{notas}}}</div>{{/if}}
+    </details>
+  </main>
+</div>

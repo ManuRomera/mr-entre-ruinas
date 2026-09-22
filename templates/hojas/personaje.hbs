@@ -1,0 +1,212 @@
+<div class="er-cuerpo er-cuerpo-personaje">
+  {{!-- ═══ Columna fija: lo que se usa en cada escena ═══ --}}
+  <aside class="er-lateral">
+    <div class="er-retrato">
+      <img src="{{actor.img}}" alt="" data-edit="img"
+           data-action="{{#if editando}}editImage{{else}}showPortraitArtwork{{/if}}"
+           data-tooltip="{{#if editando}}Cambiar retrato{{else}}Ver retrato{{/if}}">
+      <div class="er-herramientas">
+        {{#if editable}}
+        <button type="button" data-action="editar" class="{{#if editando}}activo{{/if}}"
+                data-tooltip="{{#if editando}}Bloquear la ficha{{else}}Desbloquear atributos, retrato y borrados{{/if}}">
+          <i class="fa-solid {{#if editando}}fa-lock-open{{else}}fa-lock{{/if}}"></i></button>
+        <button type="button" data-action="asistente" data-tooltip="Asistente de creación"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+        {{/if}}
+        <button type="button" data-action="compacto" data-tooltip="{{#if compacto}}Ficha completa{{else}}Modo compacto{{/if}}">
+          <i class="fa-solid {{#if compacto}}fa-up-right-and-down-left-from-center{{else}}fa-down-left-and-up-right-to-center{{/if}}"></i></button>
+      </div>
+      {{#if esVoz}}<span class="er-sello-voz" data-tooltip="Esta sesión narra la Voz"><i class="fa-solid fa-microphone-lines"></i> La Voz</span>{{/if}}
+      {{#if destino}}<span class="er-sello-destino">{{destino}}</span>{{/if}}
+      <div class="er-nombre">
+        {{#if editando}}<input type="text" name="name" value="{{actor.name}}" placeholder="Nombre">
+        {{else}}<h1>{{actor.name}}</h1>{{/if}}
+      </div>
+    </div>
+
+    <div class="er-concepto">
+      <textarea name="system.concepto" rows="1" placeholder="Quién era, o quién intenta seguir siendo" {{disabled (not editable)}} aria-label="Concepto">{{system.concepto}}</textarea>
+    </div>
+
+    {{#if escenaRefugio}}
+    <button type="button" class="er-aviso er-aviso-refugio" data-action="recuperar">
+      <i class="fa-solid fa-mug-hot"></i> Escena de refugio · elige cómo te recuperas
+    </button>
+    {{/if}}
+
+    <section class="er-atributos" aria-label="Atributos">
+      <h3 class="er-cinta">Atributos {{#if editando}}{{#unless system.repartoValido}}<span class="er-alerta" data-tooltip="El reparto inicial es +2, +1, +1 y 0. Falta: {{repartoPendiente}}"><i class="fa-solid fa-triangle-exclamation"></i></span>{{/unless}}{{/if}}</h3>
+      {{#each atributos}}
+      <div class="er-atributo">
+        <button type="button" class="er-tirar" data-action="tirar" data-atributo="{{clave}}"
+                data-tooltip="{{cubre}}<br><em>Clic: 2d6 {{signo}}</em>" {{disabled (not ../editable)}}>
+          <i class="{{icono}} er-atr-icono"></i>
+          <span class="er-atr-nombre">{{nombre}}</span>
+          <i class="fa-solid fa-dice er-atr-dado"></i>
+          {{#unless ../editando}}<span class="er-atr-valor">{{signo}}</span>{{/unless}}
+        </button>
+        {{#if ../editando}}
+        <select name="system.atributos.{{clave}}" class="er-atr-editar" aria-label="{{nombre}}">
+          {{#each ../opcionesAtributo}}<option value="{{v}}" {{#if (eq v ../valor)}}selected{{/if}}>{{etiqueta}}</option>{{/each}}
+        </select>
+        {{/if}}
+      </div>
+      {{/each}}
+      {{#if editable}}
+      <button type="button" class="er-ayuda {{#if ayudando}}activa{{/if}}" data-action="ayuda"
+              data-tooltip="M 6.3: ayudar a tu Vínculo Positivo da +1 a la tirada. Se aplica a la próxima.">
+        <i class="fa-solid fa-heart"></i>
+        <span>{{#if ayudando}}+1 en la próxima tirada{{else}}Ayudo a {{#if positivo.quien}}{{positivo.quien}}{{else}}mi Vínculo Positivo{{/if}}{{/if}}</span>
+      </button>
+      {{/if}}
+    </section>
+
+    <section class="er-pista er-estres {{#if system.enCrisis}}en-crisis{{/if}}" aria-label="Estrés">
+      <header>
+        <h3 class="er-cinta">Estrés</h3>
+        <span class="er-contador">{{system.estres.value}}<small>/{{system.estres.max}}</small></span>
+        {{#if editable}}
+          {{#if system.enCrisis}}
+          <button type="button" class="er-boton er-boton-crisis" data-action="crisis"><i class="fa-solid fa-burst"></i> Crisis</button>
+          {{else}}
+          <button type="button" class="er-boton-mini {{#if (eq cajon 'estres')}}activo{{/if}}" data-action="cajon" data-cajon="estres" data-tooltip="Ganar Estrés con motivo"><i class="fa-solid fa-plus"></i></button>
+          {{/if}}
+        {{/if}}
+      </header>
+      <div class="er-casillas">
+        {{#each estres}}<button type="button" class="er-casilla {{#if llena}}llena{{/if}}" data-action="estres" data-n="{{n}}" aria-label="Estrés {{n}}" {{disabled (not ../editable)}}></button>{{/each}}
+      </div>
+      {{#if (eq cajon "estres")}}
+      <div class="er-cajon">
+        <p class="er-cajon-titulo">¿Por qué? <small>M 8.1</small></p>
+        {{#each listas.causasEstres.items}}<button type="button" class="er-opcion" data-action="ganarEstres" data-texto="{{this}}">{{this}}</button>{{/each}}
+      </div>
+      {{/if}}
+    </section>
+
+    <section class="er-pista er-caos" aria-label="Fichas de Caos">
+      <header>
+        <h3 class="er-cinta">Caos</h3>
+        <span class="er-contador">{{system.caos.value}}<small>/{{system.caos.max}}</small></span>
+        {{#if editable}}
+        <button type="button" class="er-boton-mini {{#if (eq cajon 'ganarCaos')}}activo{{/if}}" data-action="cajon" data-cajon="ganarCaos" data-tooltip="Ganar una Ficha de Caos"><i class="fa-solid fa-plus"></i></button>
+        <button type="button" class="er-boton-mini {{#if (eq cajon 'gastarCaos')}}activo{{/if}}" data-action="cajon" data-cajon="gastarCaos" data-tooltip="Gastar Fichas de Caos"><i class="fa-solid fa-hand-holding"></i></button>
+        {{/if}}
+      </header>
+      <div class="er-fichas">
+        {{#each caos}}<button type="button" class="er-ficha {{#if llena}}llena{{/if}}" data-action="caos" data-n="{{n}}" aria-label="Ficha {{n}}" data-tooltip="Corregir sin avisar al chat" {{disabled (not ../editable)}}><i class="fa-solid fa-hurricane"></i></button>{{/each}}
+      </div>
+      {{#if (eq cajon "ganarCaos")}}
+      <div class="er-cajon">
+        <p class="er-cajon-titulo">¿Qué drama aportas? <small>M 9.1</small></p>
+        {{#each listas.ganarCaos.items}}<button type="button" class="er-opcion" data-action="ganarCaos" data-texto="{{this}}">{{this}}</button>{{/each}}
+      </div>
+      {{/if}}
+      {{#if (eq cajon "gastarCaos")}}
+      <div class="er-cajon">
+        <input type="text" data-detalle-caos placeholder="¿Qué introduces? (opcional)" aria-label="Detalle">
+        {{#each gastos}}
+        <button type="button" class="er-opcion er-gasto" data-action="gastarCaos" data-gasto="{{clave}}" {{disabled (not posible)}} data-tooltip="{{ejemplo}}">
+          <span class="er-coste">{{coste}}</span> {{titulo}}
+        </button>
+        {{/each}}
+      </div>
+      {{/if}}
+    </section>
+
+    {{!-- Resumen solo visible en modo compacto --}}
+    <section class="er-resumen">
+      <h3 class="er-cinta">Marcas</h3>
+      <ul class="er-resumen-marcas">
+        {{#each marcas}}
+        <li class="{{#if suprimida}}suprimida{{/if}}">
+          <span>{{texto}}</span>
+          {{#if ../editable}}{{#unless suprimida}}<button type="button" class="er-icono" data-action="interpretar" data-indice="{{i}}" data-tooltip="Interpretarla: +1 Caos"><i class="fa-solid fa-hurricane"></i></button>{{/unless}}{{/if}}
+        </li>
+        {{else}}<li class="er-vacio">Sin Marcas.</li>{{/each}}
+      </ul>
+      <h3 class="er-cinta">Vínculos</h3>
+      <p class="er-resumen-vinculo positivo"><i class="fa-solid fa-heart"></i> {{#if positivo.quien}}{{positivo.quien}}{{else}}—{{/if}}</p>
+      <p class="er-resumen-vinculo negativo"><i class="fa-solid fa-xmark"></i> {{#if negativo.quien}}{{negativo.quien}}{{else}}—{{/if}}
+        {{#if editable}}<button type="button" class="er-icono" data-action="empeorar" data-tooltip="Empeorar su vida a propósito: +1 Caos"><i class="fa-solid fa-hurricane"></i></button>{{/if}}</p>
+    </section>
+  </aside>
+
+  {{!-- ═══ Columna principal: lo que se interpreta ═══ --}}
+  <main class="er-principal">
+    <details class="er-bloque" data-memoria="marcas" {{#if secciones.marcas}}open{{/if}}>
+      <summary><h3 class="er-cinta">Marcas</h3><span class="er-nota">Heridas, defectos y conductas que arrastra. Interpretarlas da Caos.</span></summary>
+      {{> "systems/mr-entre-ruinas/templates/partes/marcas.hbs"}}
+    </details>
+
+    <details class="er-bloque" data-memoria="vinculos" {{#if secciones.vinculos}}open{{/if}}>
+      <summary><h3 class="er-cinta">Vínculos</h3><span class="er-nota">Arrastra un personaje a la foto para enlazarlo.</span></summary>
+      <div class="er-vinculos">
+        {{> "systems/mr-entre-ruinas/templates/partes/vinculo.hbs" v=positivo titulo="Vínculo positivo" ayuda="Alguien por quien harías casi cualquier cosa." accion="ayuda" accionTexto="Ayudarle: +1" accionIcono="fa-heart"}}
+        {{> "systems/mr-entre-ruinas/templates/partes/vinculo.hbs" v=negativo titulo="Vínculo negativo" ayuda="Alguien que te irrita, que temes o a quien culpas." accion="empeorar" accionTexto="Empeorarle: +1 Caos" accionIcono="fa-hurricane"}}
+      </div>
+    </details>
+
+    <details class="er-bloque" data-memoria="historia" {{#if secciones.historia}}open{{/if}}>
+      <summary><h3 class="er-cinta">Lo que arrastra</h3><span class="er-nota">Relaciones iniciales, objeto importante y pregunta incómoda.</span></summary>
+      <div class="er-tres">
+        <article class="er-tarjeta er-relaciones">
+          <h4>Relaciones iniciales</h4>
+          <div class="er-relacion">
+            <label>A la izquierda · <em>le debo…</em></label>
+            <input type="text" name="system.relaciones.izquierda.quien" value="{{system.relaciones.izquierda.quien}}" list="er-otros-{{actor.id}}" placeholder="¿A quién?" {{disabled (not editable)}}>
+            <textarea name="system.relaciones.izquierda.motivo" rows="2" placeholder="«Le debo la vida después de una emboscada.»" {{disabled (not editable)}}>{{system.relaciones.izquierda.motivo}}</textarea>
+          </div>
+          <div class="er-relacion">
+            <label>A la derecha · <em>sé algo que no debería</em></label>
+            <input type="text" name="system.relaciones.derecha.quien" value="{{system.relaciones.derecha.quien}}" list="er-otros-{{actor.id}}" placeholder="¿De quién?" {{disabled (not editable)}}>
+            <textarea name="system.relaciones.derecha.motivo" rows="2" placeholder="«Sé que robó medicinas del refugio.»" {{disabled (not editable)}}>{{system.relaciones.derecha.motivo}}</textarea>
+          </div>
+        </article>
+
+        <article class="er-tarjeta er-objeto">
+          <h4>Objeto importante</h4>
+          <img src="{{objetoImg}}" alt="" data-edit="system.objeto.img" {{#if editando}}data-action="editImage" data-tooltip="Cambiar imagen"{{/if}}>
+          <textarea class="er-objeto-nombre" name="system.objeto.nombre" rows="1" placeholder="Una radio, una foto, unas llaves…" {{disabled (not editable)}}>{{system.objeto.nombre}}</textarea>
+          <textarea name="system.objeto.historia" rows="2" placeholder="La historia que cuenta" {{disabled (not editable)}}>{{system.objeto.historia}}</textarea>
+        </article>
+
+        <article class="er-tarjeta er-pregunta">
+          <h4>Pregunta incómoda</h4>
+          <textarea class="er-pregunta-texto" name="system.pregunta.texto" rows="1" placeholder="¿Qué hiciste para sobrevivir?" {{disabled (not editable)}}>{{system.pregunta.texto}}</textarea>
+          {{#if pregunta.visible}}
+          <textarea class="er-papel" name="system.pregunta.respuesta" rows="3" placeholder="La respuesta existe, aunque aún no la cuentes." {{disabled (not editable)}}>{{system.pregunta.respuesta}}</textarea>
+          {{#if editable}}{{#unless system.pregunta.revelada}}{{#if system.pregunta.respuesta}}
+          <button type="button" class="er-boton er-boton-suave" data-action="revelar"><i class="fa-solid fa-eye"></i> Sacarla a la luz</button>
+          {{/if}}{{/unless}}{{/if}}
+          {{#if system.pregunta.revelada}}<span class="er-sello-revelada"><i class="fa-solid fa-eye"></i> Revelada</span>{{/if}}
+          {{else}}
+          <p class="er-papel er-oculta"><i class="fa-solid fa-lock"></i> Todavía no lo ha contado.</p>
+          {{/if}}
+        </article>
+      </div>
+      {{#each cargas}}
+      <p class="er-carga"><i class="fa-solid fa-house-chimney-crack"></i> <strong>{{nombre}}</strong> en {{refugio}} — {{carga}}</p>
+      {{/each}}
+    </details>
+
+    <div class="er-frase">
+      <input type="text" name="system.frase" value="{{system.frase}}" placeholder="Una frase que le define" aria-label="Frase" {{disabled (not editable)}}>
+    </div>
+
+    {{#if editando}}
+    <div class="er-destino-editar">
+      <label>Abandonar el juego <small>M 16</small></label>
+      <select name="system.destino">{{selectOptions destinos selected=system.destino labelAttr="nombre"}}</select>
+    </div>
+    {{/if}}
+
+    <details class="er-bloque" data-memoria="diario" {{#if secciones.diario}}open{{/if}}>
+      <summary><h3 class="er-cinta">Diario</h3><span class="er-nota">Notas, recuerdos, lo que ha pasado.</span></summary>
+      {{#if editable}}<prose-mirror name="system.notas" value="{{system.notas}}" toggled>{{{notas}}}</prose-mirror>
+      {{else}}<div class="er-notas">{{{notas}}}</div>{{/if}}
+    </details>
+  </main>
+
+  <datalist id="er-marcas-{{actor.id}}">{{#each listas.marcasIniciales.items}}<option value="{{this}}"></option>{{/each}}{{#each listas.marcasPermanentes.items}}<option value="{{this}}"></option>{{/each}}</datalist>
+  <datalist id="er-otros-{{actor.id}}">{{#each otros}}<option value="{{this}}"></option>{{/each}}</datalist>
+</div>

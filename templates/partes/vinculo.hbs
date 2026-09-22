@@ -1,0 +1,15 @@
+<article class="er-tarjeta er-vinculo er-vinculo-{{v.clave}}" data-soltar="system.vinculos.{{v.clave}}">
+  <figure class="er-polaroid {{#if v.uuidOtro}}enlazada{{/if}}" {{#if v.uuidOtro}}data-action="abrir" data-uuid="{{v.uuidOtro}}" data-tooltip="Abrir su ficha"{{else}}data-tooltip="Arrastra aquí un personaje"{{/if}}>
+    {{#if v.img}}<img src="{{v.img}}" alt="">{{else}}<i class="fa-solid fa-user"></i>{{/if}}
+  </figure>
+  <div class="er-vinculo-texto">
+    <h4>{{titulo}} <i class="fa-solid {{#if (eq v.clave 'positivo')}}fa-heart{{else}}fa-xmark{{/if}} er-vinculo-signo"></i></h4>
+    <input type="text" name="system.vinculos.{{v.clave}}.quien" value="{{v.quien}}" list="er-otros-{{actor.id}}" placeholder="¿Quién?" {{disabled (not editable)}}>
+    <textarea name="system.vinculos.{{v.clave}}.motivo" rows="2" placeholder="{{ayuda}}" {{disabled (not editable)}}>{{v.motivo}}</textarea>
+    {{#if editable}}
+    <button type="button" class="er-boton er-boton-suave {{#if (and (eq accion 'ayuda') ayudando)}}activo{{/if}}" data-action="{{accion}}">
+      <i class="fa-solid {{accionIcono}}"></i> {{accionTexto}}
+    </button>
+    {{/if}}
+  </div>
+</article>

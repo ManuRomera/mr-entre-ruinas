@@ -1,0 +1,15 @@
+{
+  "name": "mr-entre-ruinas",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MR- Entre Ruinas: sistema para Foundry VTT 13–14.",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "classic-level": "2.0.0"
+  }
+}

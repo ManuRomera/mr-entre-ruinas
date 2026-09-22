@@ -1,0 +1,169 @@
+<div class="er-cuerpo er-cuerpo-refugio">
+  {{!-- ═══ Siempre a la vista: identidad, cinco valores y Estrés colectivo ═══ --}}
+  <header class="er-cabecera">
+    <img class="er-cabecera-img" src="{{actor.img}}" alt="" data-edit="img"
+         data-action="{{#if editando}}editImage{{else}}showPortraitArtwork{{/if}}">
+    <div class="er-cabecera-datos">
+      {{#if editando}}<input class="er-titulo-input" type="text" name="name" value="{{actor.name}}" placeholder="Nombre del refugio">
+      {{else}}<h1>{{actor.name}}</h1>{{/if}}
+      <div class="er-fila-campos">
+        <label class="er-campo">Lugar
+          <select name="system.tipo" {{disabled (not editable)}}>{{selectOptions tipos selected=system.tipo blank="— ¿Qué es este lugar? —"}}</select>
+        </label>
+        <label class="er-campo">Quién manda
+          <select name="system.liderazgo" {{disabled (not editable)}}>{{selectOptions liderazgos selected=system.liderazgo blank="— Liderazgo —"}}</select>
+        </label>
+      </div>
+      {{#if tipo.ventaja}}<p class="er-linea"><i class="fa-solid fa-plus"></i> {{tipo.ventaja}} <i class="fa-solid fa-triangle-exclamation"></i> {{tipo.problema}}</p>{{/if}}
+      {{#if liderazgo}}<p class="er-linea er-tenue">{{liderazgo.texto}}</p>{{/if}}
+    </div>
+    <div class="er-herramientas er-herramientas-fijas">
+      {{#if editable}}
+      <button type="button" data-action="editar" class="{{#if editando}}activo{{/if}}" data-tooltip="{{#if editando}}Bloquear{{else}}Desbloquear imagen, nombre y borrados{{/if}}">
+        <i class="fa-solid {{#if editando}}fa-lock-open{{else}}fa-lock{{/if}}"></i></button>
+      {{/if}}
+    </div>
+  </header>
+
+  <section class="er-valores" aria-label="Valores del refugio">
+    {{#each valores}}
+    <div class="er-valor {{#if enUmbral}}critico{{/if}}" data-tooltip="{{texto}}<br><strong>{{#if (eq critico 5)}}A 5{{else}}A 0{{/if}}:</strong> {{efecto}}">
+      <span class="er-valor-nombre"><i class="{{icono}}"></i> {{nombre}}</span>
+      <span class="er-valor-numero">{{valor}}</span>
+      <div class="er-valor-puntos">
+        {{#each casillas}}<button type="button" class="er-punto {{#if llena}}llena{{/if}} {{#if actual}}actual{{/if}} {{#if (eq n 0)}}cero{{/if}}"
+          data-action="valor" data-clave="{{../clave}}" data-n="{{n}}" aria-label="{{../nombre}} {{n}}" {{disabled (not @root.editable)}}></button>{{/each}}
+      </div>
+    </div>
+    {{/each}}
+  </section>
+
+  <section class="er-pista er-estres er-estres-refugio {{#if system.enCrisis}}en-crisis{{/if}}" aria-label="Estrés del refugio">
+    <header>
+      <h3 class="er-cinta">Estrés del refugio</h3>
+      <div class="er-casillas">
+        {{#each estres}}<button type="button" class="er-casilla {{#if llena}}llena{{/if}}" data-action="estres" data-n="{{n}}" aria-label="Estrés {{n}}" {{disabled (not ../editable)}}></button>{{/each}}
+      </div>
+      <span class="er-contador">{{system.estres.value}}<small>/{{system.estres.max}}</small></span>
+      {{#if editable}}
+        {{#if system.enCrisis}}
+        <button type="button" class="er-boton er-boton-crisis" data-action="crisis"><i class="fa-solid fa-burst"></i> Crisis</button>
+        {{else}}
+        <button type="button" class="er-boton-mini {{#if (eq cajon 'estres')}}activo{{/if}}" data-action="cajon" data-cajon="estres" data-tooltip="Ganar Estrés con motivo"><i class="fa-solid fa-plus"></i></button>
+        {{/if}}
+      <button type="button" class="er-boton er-boton-suave {{#if estado.refugio}}activo{{/if}}" data-action="escenaRefugio" data-tooltip="Todos eligen una forma de recuperarse (M 14 · R 4)">
+        <i class="fa-solid fa-mug-hot"></i> {{#if estado.refugio}}Escena de refugio abierta{{else}}Escena de refugio{{/if}}</button>
+      {{/if}}
+    </header>
+    {{#if (eq cajon "estres")}}
+    <div class="er-cajon er-cajon-ancho">
+      <p class="er-cajon-titulo">¿Qué ha pasado? <small>R 3</small></p>
+      {{#each listas.estresRefugio.items}}<button type="button" class="er-opcion" data-action="ganarEstres" data-texto="{{this}}">{{this}}</button>{{/each}}
+    </div>
+    {{/if}}
+  </section>
+
+  {{!-- ═══ Lo que define a la comunidad ═══ --}}
+  <main class="er-principal er-rejilla">
+    <div class="er-columna">
+      <details class="er-bloque" data-memoria="corazon" {{#if secciones.corazon}}open{{/if}}>
+        <summary><h3 class="er-cinta">El corazón del refugio</h3></summary>
+        <label class="er-campo">Qué lo mantiene vivo
+          <div class="er-con-boton">
+            <input type="text" name="system.sustento" value="{{system.sustento}}" list="er-sustentos-{{actor.id}}" placeholder="Un generador, un pozo, una persona…" {{disabled (not editable)}}>
+            {{#if editable}}{{#if system.sustento}}<button type="button" class="er-boton er-boton-peligro" data-action="perderSustento" data-tooltip="Si desaparece, Crisis inmediata"><i class="fa-solid fa-plug-circle-xmark"></i> Se pierde</button>{{/if}}{{/if}}
+          </div>
+        </label>
+        <label class="er-campo">Qué oculta la comunidad
+          <input type="text" name="system.secreto" value="{{system.secreto}}" list="er-secretos-{{actor.id}}" placeholder="Toda comunidad esconde algo. Siempre." {{disabled (not editable)}}>
+        </label>
+        <label class="er-casilla-texto"><input type="checkbox" name="system.secretoRevelado" {{checked system.secretoRevelado}} {{disabled (not editable)}}> El secreto ha salido a la luz</label>
+        <label class="er-campo">Qué teme este lugar
+          <input type="text" name="system.miedo" value="{{system.miedo}}" list="er-miedos-{{actor.id}}" placeholder="El hambre, el invierno, otra comunidad…" {{disabled (not editable)}}>
+        </label>
+      </details>
+
+      <details class="er-bloque" data-memoria="marcas" {{#if secciones.marcas}}open{{/if}}>
+        <summary><h3 class="er-cinta">Marcas del refugio</h3><span class="er-nota">Cómo ha cambiado tras cada Crisis.</span></summary>
+        <ol class="er-marcas">
+          {{#each system.marcas}}
+          <li class="er-marca permanente">
+            <i class="fa-solid fa-bolt er-marca-icono"></i>
+            <input type="text" name="system.marcas.{{@index}}.texto" value="{{texto}}" list="er-marcas-refugio-{{../actor.id}}" {{disabled (not ../editable)}}>
+            {{#if ../editando}}<button type="button" class="er-icono er-icono-borrar" data-action="quitarFila" data-lista="marcas" data-indice="{{@index}}" data-tooltip="Borrar"><i class="fa-solid fa-trash"></i></button>{{/if}}
+          </li>
+          {{else}}<li class="er-vacio">Todavía intacto. Por ahora.</li>{{/each}}
+        </ol>
+        {{#if editable}}
+        <div class="er-nueva">
+          <input type="text" data-nueva="marcas" list="er-marcas-refugio-{{actor.id}}" placeholder="Nueva Marca…">
+          <button type="button" class="er-boton er-boton-suave" data-action="anadirFila" data-lista="marcas"><i class="fa-solid fa-plus"></i> Añadir</button>
+        </div>
+        {{/if}}
+      </details>
+    </div>
+
+    <div class="er-columna">
+      <details class="er-bloque" data-memoria="relojes" {{#if secciones.relojes}}open{{/if}}>
+        <summary><h3 class="er-cinta">Relojes</h3><span class="er-nota">Clic avanza · clic derecho retrocede.</span></summary>
+        <div class="er-relojes">
+          {{#each relojes}}
+          <div class="er-reloj {{#if completo}}completo{{/if}}">
+            <svg viewBox="0 0 100 100" aria-label="{{nombre}}: {{marcados}} de {{segmentos}}">
+              {{#each porciones}}<path d="{{d}}" class="{{#if llena}}llena{{/if}}" data-action="reloj" data-indice="{{../i}}" data-n="{{n}}"></path>{{/each}}
+            </svg>
+            <textarea name="system.relojes.{{i}}.nombre" rows="1" placeholder="Amenaza" {{disabled (not @root.editable)}}>{{nombre}}</textarea>
+            <input type="hidden" name="system.relojes.{{i}}.marcados" value="{{marcados}}">
+            {{#if @root.editando}}
+            <div class="er-reloj-editar">
+              <select name="system.relojes.{{i}}.segmentos">{{selectOptions @root.segmentosReloj selected=segmentos}}</select>
+              <button type="button" class="er-icono er-icono-borrar" data-action="quitarFila" data-lista="relojes" data-indice="{{i}}" data-tooltip="Borrar"><i class="fa-solid fa-trash"></i></button>
+            </div>
+            {{else}}<input type="hidden" name="system.relojes.{{i}}.segmentos" value="{{segmentos}}">{{/if}}
+          </div>
+          {{else}}<p class="er-vacio">Ninguna amenaza en marcha.</p>{{/each}}
+        </div>
+        {{#if editable}}
+        <div class="er-nueva">
+          <input type="text" data-nueva="relojes" list="er-relojes-{{actor.id}}" placeholder="«El generador va a morir.»">
+          <button type="button" class="er-boton er-boton-suave" data-action="anadirFila" data-lista="relojes" data-campo="nombre" data-valores='{"segmentos": 6, "marcados": 0}'><i class="fa-solid fa-plus"></i> Reloj</button>
+        </div>
+        {{/if}}
+      </details>
+
+      <details class="er-bloque" data-memoria="roles" {{#if secciones.roles}}open{{/if}}>
+        <summary><h3 class="er-cinta">Roles</h3><span class="er-nota">No son clases: son cargas.</span></summary>
+        <ul class="er-roles">
+          {{#each roles}}
+          <li data-tooltip="{{carga}}">
+            <span class="er-rol-nombre">{{nombre}}</span>
+            <select name="system.roles.{{clave}}" {{disabled (not @root.editable)}}>{{selectOptions @root.personajes selected=uuid blank="—"}}</select>
+          </li>
+          {{/each}}
+        </ul>
+      </details>
+
+      <details class="er-bloque" data-memoria="expedicion" {{#if secciones.expedicion}}open{{/if}}>
+        <summary><h3 class="er-cinta">Expediciones</h3><span class="er-nota">Salir siempre cuesta algo.</span></summary>
+        <div class="er-botonera">
+          <button type="button" class="er-boton er-boton-suave" data-action="oraculo" data-lista="objetivosExpedicion"><i class="fa-solid fa-dice"></i> Objetivo</button>
+          <button type="button" class="er-boton er-boton-suave" data-action="oraculo" data-lista="preguntasExpedicion"><i class="fa-solid fa-dice"></i> Pregunta antes de salir</button>
+          <button type="button" class="er-boton er-boton-suave" data-action="oraculo" data-lista="complicacionesExpedicion"><i class="fa-solid fa-dice"></i> Complicación</button>
+          {{#if editable}}<button type="button" class="er-boton er-boton-peligro" data-action="ganarEstres" data-texto="Una expedición fracasa."><i class="fa-solid fa-person-walking-arrow-loop-left"></i> Fracasa</button>{{/if}}
+        </div>
+      </details>
+    </div>
+
+    <details class="er-bloque er-ancho" data-memoria="diario" {{#if secciones.diario}}open{{/if}}>
+      <summary><h3 class="er-cinta">Crónica del refugio</h3><span class="er-nota">Normas, nombres, lo que nadie quiere recordar.</span></summary>
+      {{#if editable}}<prose-mirror name="system.notas" value="{{system.notas}}" toggled>{{{notas}}}</prose-mirror>
+      {{else}}<div class="er-notas">{{{notas}}}</div>{{/if}}
+    </details>
+  </main>
+
+  <datalist id="er-sustentos-{{actor.id}}">{{#each listas.sustentos.items}}<option value="{{this}}"></option>{{/each}}</datalist>
+  <datalist id="er-secretos-{{actor.id}}">{{#each listas.secretos.items}}<option value="{{this}}"></option>{{/each}}</datalist>
+  <datalist id="er-miedos-{{actor.id}}">{{#each listas.miedos.items}}<option value="{{this}}"></option>{{/each}}</datalist>
+  <datalist id="er-marcas-refugio-{{actor.id}}">{{#each listas.marcasRefugio.items}}<option value="{{this}}"></option>{{/each}}</datalist>
+  <datalist id="er-relojes-{{actor.id}}">{{#each listas.relojes.items}}<option value="{{this}}"></option>{{/each}}</datalist>
+</div>

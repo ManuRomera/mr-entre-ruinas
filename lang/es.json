@@ -1,0 +1,10 @@
+{
+  "TYPES": {
+    "Actor": {
+      "personaje": "Personaje",
+      "pnj": "Personaje no jugador",
+      "refugio": "Refugio",
+      "comunidad": "Comunidad"
+    }
+  }
+}

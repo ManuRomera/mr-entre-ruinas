@@ -1,0 +1,366 @@
+[
+ {
+  "_id": "pregenLuzRomero0",
+  "name": "Lucía “Luz” Romero",
+  "type": "personaje",
+  "img": "systems/mr-entre-ruinas/assets/pregenerados/luz.webp",
+  "system": {
+   "concepto": "Exrepartidora de comida incapaz de confiar en nadie.",
+   "frase": "Confío en mi instinto. Ojalá estuviera equivocado más a menudo.",
+   "atributos": {
+    "violencia": 1,
+    "coco": 2,
+    "labia": 0,
+    "aguante": 1
+   },
+   "estres": {
+    "value": 0,
+    "max": 5
+   },
+   "caos": {
+    "value": 2,
+    "max": 5
+   },
+   "marcas": [
+    {
+     "texto": "Siempre espera lo peor.",
+     "permanente": false,
+     "suprimida": false
+    }
+   ],
+   "relaciones": {
+    "izquierda": {
+     "quien": "",
+     "uuid": "",
+     "motivo": "Le debo la vida después de una emboscada."
+    },
+    "derecha": {
+     "quien": "",
+     "uuid": "",
+     "motivo": "Sé que robó medicinas del refugio."
+    }
+   },
+   "vinculos": {
+    "positivo": {
+     "quien": "Nico",
+     "uuid": "",
+     "motivo": "Porque aún cree que puede salvar gente."
+    },
+    "negativo": {
+     "quien": "Marta",
+     "uuid": "",
+     "motivo": "Porque le recuerda en quién se ha convertido."
+    }
+   },
+   "objeto": {
+    "nombre": "Una mochila térmica llena de parches y notas viejas.",
+    "historia": "",
+    "img": "systems/mr-entre-ruinas/assets/pregenerados/luz-objeto.webp"
+   },
+   "pregunta": {
+    "texto": "¿Qué hiciste para sobrevivir?",
+    "respuesta": "Dejé encerrados a otros dentro de un supermercado.",
+    "revelada": false
+   },
+   "destino": "",
+   "notas": ""
+  },
+  "prototypeToken": {
+   "name": "Lucía “Luz” Romero",
+   "actorLink": true,
+   "disposition": 1,
+   "displayBars": 20,
+   "bar1": {
+    "attribute": "estres"
+   },
+   "bar2": {
+    "attribute": "caos"
+   },
+   "texture": {
+    "src": "systems/mr-entre-ruinas/assets/pregenerados/luz-token.webp"
+   },
+   "ring": {
+    "enabled": true
+   }
+  },
+  "ownership": {
+   "default": 0
+  },
+  "items": [],
+  "effects": [],
+  "flags": {}
+ },
+ {
+  "_id": "pregenGaboSalvat",
+  "name": "Gabriel “Gabo” Salvatierra",
+  "type": "personaje",
+  "img": "systems/mr-entre-ruinas/assets/pregenerados/gabo.webp",
+  "system": {
+   "concepto": "Profesor de literatura que habla demasiado cuando tiene miedo.",
+   "frase": "Contamos historias para no volvernos locos.",
+   "atributos": {
+    "violencia": 0,
+    "coco": 2,
+    "labia": 1,
+    "aguante": 1
+   },
+   "estres": {
+    "value": 0,
+    "max": 5
+   },
+   "caos": {
+    "value": 2,
+    "max": 5
+   },
+   "marcas": [
+    {
+     "texto": "Humor inapropiado.",
+     "permanente": false,
+     "suprimida": false
+    }
+   ],
+   "relaciones": {
+    "izquierda": {
+     "quien": "",
+     "uuid": "",
+     "motivo": "Le debo haberme sacado del hospital."
+    },
+    "derecha": {
+     "quien": "",
+     "uuid": "",
+     "motivo": "Sé quién abandonó la radio aquella noche."
+    }
+   },
+   "vinculos": {
+    "positivo": {
+     "quien": "Luz",
+     "uuid": "",
+     "motivo": "Porque le recuerda a sus antiguos alumnos."
+    },
+    "negativo": {
+     "quien": "Iván",
+     "uuid": "",
+     "motivo": "Porque cree que disfruta demasiado de la violencia."
+    }
+   },
+   "objeto": {
+    "nombre": "Un cassette grabado por su hija.",
+    "historia": "",
+    "img": "systems/mr-entre-ruinas/assets/pregenerados/gabo-objeto.webp"
+   },
+   "pregunta": {
+    "texto": "¿A quién sigues buscando?",
+    "respuesta": "A mi hermano… aunque probablemente esté muerto.",
+    "revelada": false
+   },
+   "destino": "",
+   "notas": ""
+  },
+  "prototypeToken": {
+   "name": "Gabriel “Gabo” Salvatierra",
+   "actorLink": true,
+   "disposition": 1,
+   "displayBars": 20,
+   "bar1": {
+    "attribute": "estres"
+   },
+   "bar2": {
+    "attribute": "caos"
+   },
+   "texture": {
+    "src": "systems/mr-entre-ruinas/assets/pregenerados/gabo-token.webp"
+   },
+   "ring": {
+    "enabled": true
+   }
+  },
+  "ownership": {
+   "default": 0
+  },
+  "items": [],
+  "effects": [],
+  "flags": {}
+ },
+ {
+  "_id": "pregenMartaVidal",
+  "name": "Marta Vidal",
+  "type": "personaje",
+  "img": "systems/mr-entre-ruinas/assets/pregenerados/marta.webp",
+  "system": {
+   "concepto": "Enfermera agotada que sigue intentando mantener la normalidad.",
+   "frase": "Cuidar es resistir. Incluso cuando no queda nada que salvar.",
+   "atributos": {
+    "violencia": 0,
+    "coco": 1,
+    "labia": 1,
+    "aguante": 2
+   },
+   "estres": {
+    "value": 0,
+    "max": 5
+   },
+   "caos": {
+    "value": 2,
+    "max": 5
+   },
+   "marcas": [
+    {
+     "texto": "Nunca abandona a nadie.",
+     "permanente": false,
+     "suprimida": false
+    }
+   ],
+   "relaciones": {
+    "izquierda": {
+     "quien": "",
+     "uuid": "",
+     "motivo": "Le debo haber cuidado de mi hijo."
+    },
+    "derecha": {
+     "quien": "",
+     "uuid": "",
+     "motivo": "Sé que está ocultando una mordida."
+    }
+   },
+   "vinculos": {
+    "positivo": {
+     "quien": "Gabo",
+     "uuid": "",
+     "motivo": "Porque aún consigue hacerla reír."
+    },
+    "negativo": {
+     "quien": "Luz",
+     "uuid": "",
+     "motivo": "Porque sospecha que sacrificaría a cualquiera."
+    }
+   },
+   "objeto": {
+    "nombre": "Una bolsa médica casi vacía.",
+    "historia": "",
+    "img": "systems/mr-entre-ruinas/assets/pregenerados/marta-objeto.webp"
+   },
+   "pregunta": {
+    "texto": "¿Qué mentira sigues sosteniendo?",
+    "respuesta": "Que todavía queda ayuda ahí fuera.",
+    "revelada": false
+   },
+   "destino": "",
+   "notas": ""
+  },
+  "prototypeToken": {
+   "name": "Marta Vidal",
+   "actorLink": true,
+   "disposition": 1,
+   "displayBars": 20,
+   "bar1": {
+    "attribute": "estres"
+   },
+   "bar2": {
+    "attribute": "caos"
+   },
+   "texture": {
+    "src": "systems/mr-entre-ruinas/assets/pregenerados/marta-token.webp"
+   },
+   "ring": {
+    "enabled": true
+   }
+  },
+  "ownership": {
+   "default": 0
+  },
+  "items": [],
+  "effects": [],
+  "flags": {}
+ },
+ {
+  "_id": "pregenIvanOrtega",
+  "name": "Iván Ortega",
+  "type": "personaje",
+  "img": "systems/mr-entre-ruinas/assets/pregenerados/ivan.webp",
+  "system": {
+   "concepto": "Vigilante nocturno paranoico obsesionado con las transmisiones de radio.",
+   "frase": "Escuchar no es vivir. Pero a veces es todo lo que queda.",
+   "atributos": {
+    "violencia": 2,
+    "coco": 1,
+    "labia": 0,
+    "aguante": 1
+   },
+   "estres": {
+    "value": 0,
+    "max": 5
+   },
+   "caos": {
+    "value": 2,
+    "max": 5
+   },
+   "marcas": [
+    {
+     "texto": "No soporta el silencio.",
+     "permanente": false,
+     "suprimida": false
+    }
+   ],
+   "relaciones": {
+    "izquierda": {
+     "quien": "",
+     "uuid": "",
+     "motivo": "Le debo haberme dejado entrar en el refugio."
+    },
+    "derecha": {
+     "quien": "",
+     "uuid": "",
+     "motivo": "Sé quién apagó realmente la antena."
+    }
+   },
+   "vinculos": {
+    "positivo": {
+     "quien": "Marta",
+     "uuid": "",
+     "motivo": "Porque es la única que todavía lo trata como a una persona."
+    },
+    "negativo": {
+     "quien": "Gabo",
+     "uuid": "",
+     "motivo": "Porque cree que oculta algo sobre las transmisiones."
+    }
+   },
+   "objeto": {
+    "nombre": "Un walkman que solo reproduce estática.",
+    "historia": "",
+    "img": "systems/mr-entre-ruinas/assets/pregenerados/ivan-objeto.webp"
+   },
+   "pregunta": {
+    "texto": "¿Qué parte de ti murió ya?",
+    "respuesta": "La que confiaba en otras personas.",
+    "revelada": false
+   },
+   "destino": "",
+   "notas": ""
+  },
+  "prototypeToken": {
+   "name": "Iván Ortega",
+   "actorLink": true,
+   "disposition": 1,
+   "displayBars": 20,
+   "bar1": {
+    "attribute": "estres"
+   },
+   "bar2": {
+    "attribute": "caos"
+   },
+   "texture": {
+    "src": "systems/mr-entre-ruinas/assets/pregenerados/ivan-token.webp"
+   },
+   "ring": {
+    "enabled": true
+   }
+  },
+  "ownership": {
+   "default": 0
+  },
+  "items": [],
+  "effects": [],
+  "flags": {}
+ }
+]

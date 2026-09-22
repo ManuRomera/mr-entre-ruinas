@@ -1,0 +1,48 @@
+<div class="mr-entre-ruinas er-tc er-tono-{{tono}} er-tipo-{{tipo}}">
+  <header class="er-tc-cabecera">
+    {{#if img}}<img class="er-tc-img" src="{{img}}" alt="">{{/if}}
+    <div class="er-tc-rotulo">
+      <span class="er-cinta">{{#if icono}}<i class="{{icono}}"></i> {{/if}}{{etiqueta}}</span>
+      {{#if subtitulo}}<span class="er-tc-sub">{{subtitulo}}</span>{{/if}}
+    </div>
+    {{#if dados}}
+    <div class="er-tc-tirada" aria-label="Total {{total}}">
+      <span class="er-dados">{{#each dados}}<span class="er-dado er-dado-{{this}}">{{this}}</span>{{/each}}</span>
+      <span class="er-total">{{total}}</span>
+    </div>
+    {{/if}}
+  </header>
+
+  <h3 class="er-tc-titulo">{{titulo}}</h3>
+  {{#if texto}}<p class="er-tc-texto">{{texto}}</p>{{/if}}
+  {{#each modificadores}}<p class="er-tc-mod"><i class="fa-solid fa-heart"></i> {{this}}</p>{{/each}}
+  {{#if cita}}<blockquote class="er-papel">{{cita}}</blockquote>{{/if}}
+  {{#if marca}}<p class="er-tc-marca"><i class="fa-solid fa-bolt"></i> Nueva Marca: <strong>{{marca}}</strong></p>{{/if}}
+
+  {{#if estres}}
+  <div class="er-tc-estres {{#if estres.crisis}}crisis{{/if}}">
+    <span class="er-casillas">{{#each estres.casillas}}<span class="er-casilla {{#if this}}llena{{/if}}"></span>{{/each}}</span>
+    <span>{{#if estres.crisis}}<strong>¡Crisis!</strong>{{else}}Estrés {{estres.valor}}/{{estres.max}}{{/if}}</span>
+  </div>
+  {{/if}}
+
+  {{#if lista}}
+  <details class="er-lista-opciones">
+    <summary>{{lista.titulo}}</summary>
+    <div class="er-chips">
+      {{#each lista.items}}<button type="button" class="er-chip" data-er-accion="{{accion}}" {{{attrs}}}>{{texto}}</button>{{/each}}
+    </div>
+  </details>
+  {{/if}}
+
+  {{#if botones}}
+  <footer class="er-tc-botones">
+    {{#each botones}}
+    <button type="button" class="er-boton {{#if dueno}}er-boton-principal{{/if}}" data-er-accion="{{accion}}" {{#if dueno}}data-dueno="{{dueno}}"{{/if}} {{{attrs}}}>
+      {{#if icono}}<i class="{{icono}}"></i> {{/if}}{{etiqueta}}
+    </button>
+    {{/each}}
+  </footer>
+  {{/if}}
+  {{#if pie}}<p class="er-tc-pie">{{pie}}</p>{{/if}}
+</div>

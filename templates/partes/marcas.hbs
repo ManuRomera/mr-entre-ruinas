@@ -1,0 +1,26 @@
+<ol class="er-marcas">
+  {{#each marcas}}
+  <li class="er-marca {{#if suprimida}}suprimida{{/if}} {{#if permanente}}permanente{{/if}}">
+    <i class="fa-solid {{#if permanente}}fa-bolt{{else}}fa-cloud-bolt{{/if}} er-marca-icono"></i>
+    <input type="text" name="system.marcas.{{i}}.texto" value="{{texto}}" list="er-marcas-{{../actor.id}}" placeholder="Describe la Marca" {{disabled (not ../editable)}}>
+    <input type="hidden" name="system.marcas.{{i}}.permanente" value="{{permanente}}">
+    <input type="hidden" name="system.marcas.{{i}}.suprimida" value="{{suprimida}}">
+    <span class="er-etiqueta">{{#if suprimida}}En suspenso{{else}}{{#if permanente}}Permanente{{else}}Inicial{{/if}}{{/if}}</span>
+    {{#if ../editable}}
+    {{#unless suprimida}}<button type="button" class="er-icono er-icono-caos" data-action="interpretar" data-indice="{{i}}" data-tooltip="La interpreto y me mete en un lío: +1 Ficha de Caos"><i class="fa-solid fa-hurricane"></i></button>{{/unless}}
+    <button type="button" class="er-icono" data-action="suprimir" data-indice="{{i}}" data-tooltip="{{#if suprimida}}Recuperarla{{else}}Suspenderla hasta el final del episodio (escena de refugio){{/if}}"><i class="fa-solid {{#if suprimida}}fa-sun{{else}}fa-moon{{/if}}"></i></button>
+    {{#if ../editando}}<button type="button" class="er-icono er-icono-borrar" data-action="quitarFila" data-lista="marcas" data-indice="{{i}}" data-tooltip="Borrar"><i class="fa-solid fa-trash"></i></button>{{/if}}
+    {{/if}}
+  </li>
+  {{else}}
+  <li class="er-vacio">Aún sin Marcas. Elige o inventa una Marca inicial.</li>
+  {{/each}}
+</ol>
+{{#if editable}}
+<div class="er-nueva">
+  <input type="text" data-nueva="marcas" list="er-marcas-{{actor.id}}" placeholder="Nueva Marca…" aria-label="Nueva Marca">
+  <button type="button" class="er-boton er-boton-suave" data-action="anadirFila" data-lista="marcas" data-valores='{"permanente": {{#if marcas.length}}true{{else}}false{{/if}}, "suprimida": false}'>
+    <i class="fa-solid fa-plus"></i> Añadir
+  </button>
+</div>
+{{/if}}

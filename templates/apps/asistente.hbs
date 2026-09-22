@@ -1,0 +1,119 @@
+<div class="er-cuerpo er-cuerpo-asistente">
+  <header class="er-asistente-cabecera">
+    <img src="{{actor.img}}" alt="">
+    <div>
+      <p class="er-nota">No son supervivientes perfectos ni héroes en potencia. Son personas normales que intentan mantenerse enteras mientras el mundo se les cae encima. <small>M 5</small></p>
+      <label class="er-campo">Nombre
+        <input type="text" name="nombre" value="{{actor.name}}" placeholder="Lucía «Luz» Romero">
+      </label>
+    </div>
+  </header>
+
+  <main class="er-principal er-pasos">
+    <section class="er-paso">
+      <h3><span class="er-num">1</span> Concepto</h3>
+      <p class="er-nota">Quién era, o quién intenta seguir siendo. Una sola frase.</p>
+      <div class="er-con-boton">
+        <input type="text" name="concepto" value="{{s.concepto}}" placeholder="Exrepartidora de comida incapaz de confiar en nadie.">
+        <button type="button" class="er-boton-mini" data-action="azar" data-campo="concepto" data-lista="conceptos"><i class="fa-solid fa-dice"></i></button>
+      </div>
+      <div class="er-chips">{{#each listas.conceptos.items}}<button type="button" class="er-chip" data-rellenar="concepto" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+    </section>
+
+    <section class="er-paso">
+      <h3><span class="er-num">2</span> Atributos</h3>
+      <p class="er-nota">Reparte {{reparto}} sin repetir ninguno.
+        <button type="button" class="er-boton-mini" data-action="repartoAzar" data-tooltip="Reparto al azar"><i class="fa-solid fa-dice"></i></button></p>
+      <div class="er-reparto">
+        {{#each atributos}}
+        <div class="er-reparto-fila" data-tooltip="{{cubre}}">
+          <span class="er-reparto-nombre"><i class="{{icono}}"></i> {{nombre}}</span>
+          <span class="er-segmentado">
+            {{#each opciones}}<label><input type="radio" name="atributos.{{../clave}}" value="{{v}}" {{#if elegido}}checked{{/if}}><span>{{etiqueta}}</span></label>{{/each}}
+          </span>
+        </div>
+        {{/each}}
+      </div>
+      <p class="er-reparto-estado" aria-live="polite"></p>
+    </section>
+
+    <section class="er-paso">
+      <h3><span class="er-num">3</span> Marca inicial</h3>
+      <p class="er-nota">Una herida emocional, un defecto o una conducta destructiva. Cuando te mete en un lío en vez de sacarte, ganas 1 Ficha de Caos.</p>
+      <div class="er-con-boton">
+        <input type="text" name="marca" value="{{marcaInicial}}" placeholder="Siempre espera lo peor.">
+        <button type="button" class="er-boton-mini" data-action="azar" data-campo="marca" data-lista="marcasIniciales"><i class="fa-solid fa-dice"></i></button>
+      </div>
+      <div class="er-chips">{{#each listas.marcasIniciales.items}}<button type="button" class="er-chip" data-rellenar="marca" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+    </section>
+
+    <section class="er-paso">
+      <h3><span class="er-num">4</span> Relaciones iniciales</h3>
+      <p class="er-nota">Sobre quien se sienta a tu izquierda: «le debo algo». Sobre quien está a tu derecha: «sé algo que no debería».</p>
+      <div class="er-dos">
+        <div>
+          <label class="er-campo">A la izquierda
+            <input type="text" name="relaciones.izquierda.quien" value="{{s.relaciones.izquierda.quien}}" list="er-asis-otros" placeholder="¿A quién?">
+          </label>
+          <textarea name="relaciones.izquierda.motivo" rows="2" placeholder="Le debo…">{{s.relaciones.izquierda.motivo}}</textarea>
+        </div>
+        <div>
+          <label class="er-campo">A la derecha
+            <input type="text" name="relaciones.derecha.quien" value="{{s.relaciones.derecha.quien}}" list="er-asis-otros" placeholder="¿De quién?">
+          </label>
+          <textarea name="relaciones.derecha.motivo" rows="2" placeholder="Sé que…">{{s.relaciones.derecha.motivo}}</textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="er-paso">
+      <h3><span class="er-num">5</span> Objeto importante</h3>
+      <p class="er-nota">Casi nunca es útil para sobrevivir. Lo importante es la historia que cuenta.</p>
+      <div class="er-con-boton">
+        <input type="text" name="objeto.nombre" value="{{s.objeto.nombre}}" placeholder="Un walkman que solo reproduce estática.">
+        <button type="button" class="er-boton-mini" data-action="azar" data-campo="objeto.nombre" data-lista="objetos"><i class="fa-solid fa-dice"></i></button>
+      </div>
+      <div class="er-chips">{{#each listas.objetos.items}}<button type="button" class="er-chip" data-rellenar="objeto.nombre" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+      <textarea name="objeto.historia" rows="2" placeholder="¿Qué historia cuenta?">{{s.objeto.historia}}</textarea>
+    </section>
+
+    <section class="er-paso">
+      <h3><span class="er-num">6</span> La pregunta incómoda</h3>
+      <p class="er-nota">La respuesta no tiene por qué compartirse todavía: basta con que exista. Solo tú la verás hasta que la reveles.</p>
+      <div class="er-con-boton">
+        <input type="text" name="pregunta.texto" value="{{s.pregunta.texto}}" placeholder="¿Qué hiciste para sobrevivir?">
+        <button type="button" class="er-boton-mini" data-action="azar" data-campo="pregunta.texto" data-lista="preguntasPersonaje"><i class="fa-solid fa-dice"></i></button>
+      </div>
+      <div class="er-chips">{{#each listas.preguntasPersonaje.items}}<button type="button" class="er-chip" data-rellenar="pregunta.texto" data-texto="{{this}}">{{this}}</button>{{/each}}</div>
+      <textarea class="er-papel" name="pregunta.respuesta" rows="2" placeholder="La respuesta…">{{s.pregunta.respuesta}}</textarea>
+    </section>
+
+    <section class="er-paso er-paso-ancho">
+      <h3><span class="er-num"><i class="fa-solid fa-link"></i></span> Vínculos</h3>
+      <p class="er-nota">Te anclan al grupo. Ayudar al positivo da +1 a la tirada; empeorar a propósito la vida del negativo da 1 Ficha de Caos. <small>M 6</small></p>
+      <div class="er-dos">
+        <div class="er-vinculo-asis positivo">
+          <label class="er-campo"><span><i class="fa-solid fa-heart"></i> Vínculo positivo</span>
+            <input type="text" name="vinculos.positivo.quien" value="{{s.vinculos.positivo.quien}}" list="er-asis-otros" placeholder="Alguien por quien harías casi cualquier cosa">
+          </label>
+          <textarea name="vinculos.positivo.motivo" rows="2" placeholder="…porque aún cree que puede salvar gente.">{{s.vinculos.positivo.motivo}}</textarea>
+        </div>
+        <div class="er-vinculo-asis negativo">
+          <label class="er-campo"><span><i class="fa-solid fa-xmark"></i> Vínculo negativo</span>
+            <input type="text" name="vinculos.negativo.quien" value="{{s.vinculos.negativo.quien}}" list="er-asis-otros" placeholder="Alguien que te irrita, temes o culpas">
+          </label>
+          <textarea name="vinculos.negativo.motivo" rows="2" placeholder="…porque le recuerda en quién se ha convertido.">{{s.vinculos.negativo.motivo}}</textarea>
+        </div>
+      </div>
+      <label class="er-campo">Una frase que le define <span class="er-tenue">(opcional)</span>
+        <input type="text" name="frase" value="{{s.frase}}" placeholder="«Confío en mi instinto. Ojalá estuviera equivocado más a menudo.»">
+      </label>
+    </section>
+  </main>
+
+  <footer class="er-pie-formulario">
+    <p class="er-tenue">Empiezas con 2 Fichas de Caos y 5 espacios de Estrés vacíos.</p>
+    <button type="submit" class="er-boton er-boton-principal"><i class="fa-solid fa-check"></i> Guardar superviviente</button>
+  </footer>
+  <datalist id="er-asis-otros">{{#each otros}}<option value="{{this}}"></option>{{/each}}</datalist>
+</div>
