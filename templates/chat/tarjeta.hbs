@@ -1,6 +1,6 @@
 <div class="mr-entre-ruinas er-tc er-tono-{{tono}} er-tipo-{{tipo}}">
   <header class="er-tc-cabecera">
-    {{#if img}}<img class="er-tc-img" src="{{img}}" alt="">{{/if}}
+    {{#if img}}<img class="er-tc-img" src="{{img}}" alt="" {{#if retrato}}data-retrato="{{retrato}}"{{/if}}>{{/if}}
     <div class="er-tc-rotulo">
       <span class="er-cinta">{{#if icono}}<i class="{{icono}}"></i> {{/if}}{{etiqueta}}</span>
       {{#if subtitulo}}<span class="er-tc-sub">{{subtitulo}}</span>{{/if}}

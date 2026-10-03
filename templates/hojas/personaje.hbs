@@ -2,7 +2,7 @@
   {{!-- ═══ Columna fija: lo que se usa en cada escena ═══ --}}
   <aside class="er-lateral">
     <div class="er-retrato">
-      <img src="{{actor.img}}" alt="" data-edit="img"
+      <img src="{{actor.img}}" alt="" data-retrato="{{actor.id}}" data-edit="img"
            data-action="{{#if editando}}editImage{{else}}showPortraitArtwork{{/if}}"
            data-tooltip="{{#if editando}}Cambiar retrato{{else}}Ver retrato{{/if}}">
       <div class="er-herramientas">
@@ -11,6 +11,7 @@
                 data-tooltip="{{#if editando}}Bloquear la ficha{{else}}Desbloquear atributos, retrato y borrados{{/if}}">
           <i class="fa-solid {{#if editando}}fa-lock-open{{else}}fa-lock{{/if}}"></i></button>
         <button type="button" data-action="asistente" data-tooltip="Asistente de creación"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+        <button type="button" data-action="retrato" data-tooltip="Encuadre del retrato: zona y zoom"><i class="fa-solid fa-crop-simple"></i></button>
         {{/if}}
         <button type="button" data-action="compacto" data-tooltip="{{#if compacto}}Ficha completa{{else}}Modo compacto{{/if}}">
           <i class="fa-solid {{#if compacto}}fa-up-right-and-down-left-from-center{{else}}fa-down-left-and-up-right-to-center{{/if}}"></i></button>

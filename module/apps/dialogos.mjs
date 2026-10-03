@@ -118,4 +118,16 @@ export async function finEpisodioDialogo() {
   if (r && r !== "no") await finEpisodio({ cliffhanger: r.cliffhanger, voz: r.voz });
 }
 
-export const dialogos = { crisis, crisisRefugio, recuperar, recuperarPropio, finEpisodio: finEpisodioDialogo };
+/** Sacar a la luz la pregunta incómoda: desde la ficha o al elegir «Revelar una verdad». */
+export async function revelar(actor) {
+  const p = actor.system.pregunta;
+  if (!actor.isOwner || p.revelada || !p.respuesta.trim()) return;
+  const ok = await DialogV2.confirm({
+    window: { title: "Revelar la pregunta incómoda" },
+    content: "<p>La respuesta se publicará en el chat y quedará visible en tu hoja para toda la mesa.</p>",
+    classes: ["mr-entre-ruinas", "er-dialogo"]
+  });
+  if (ok) await actor.revelarPregunta();
+}
+
+export const dialogos = { revelar, crisis, crisisRefugio, recuperar, recuperarPropio, finEpisodio: finEpisodioDialogo };

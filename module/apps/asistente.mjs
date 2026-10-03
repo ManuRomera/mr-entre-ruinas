@@ -9,6 +9,7 @@ import { RUTA } from "../mesa.mjs";
 import { ATRIBUTOS, LISTAS, REPARTO } from "../listas.mjs";
 import { repartoValido, repartoPendiente, alAzar } from "../reglas.mjs";
 import { signo } from "../actor.mjs";
+import { pintarRetratos } from "../retrato.mjs";
 
 export class Asistente extends ConMemoria(HandlebarsApplicationMixin(ApplicationV2)) {
   static MEMORIA = "asistente";
@@ -60,6 +61,7 @@ export class Asistente extends ConMemoria(HandlebarsApplicationMixin(Application
   async _onRender(context, options) {
     await super._onRender(context, options);
     const raiz = this.element;
+    pintarRetratos(raiz);
     // Chips: rellenan su casilla sin volver a pintar la ventana.
     for (const chip of raiz.querySelectorAll("[data-rellenar]")) {
       chip.addEventListener("click", () => {
@@ -109,12 +111,18 @@ export class Asistente extends ConMemoria(HandlebarsApplicationMixin(Application
     // La Marca inicial sustituye a la anterior inicial; las permanentes se conservan.
     const marcas = s.toObject().marcas.filter(m => m.permanente);
     if (d.marca?.trim()) marcas.unshift({ texto: d.marca.trim(), permanente: false, suprimida: false });
+    // Si cambia a quién nombra un vínculo, deja de apuntar al Actor que tenía enlazado.
+    const nuevo = (grupo, clave) => d[grupo]?.[clave]?.quien ?? "";
+    const enlace = (grupo, clave) => (s[grupo][clave].uuid && nuevo(grupo, clave) !== s[grupo][clave].quien ? "" : s[grupo][clave].uuid);
     await this.actor.update({
+      "system.vinculos.positivo.uuid": enlace("vinculos", "positivo"),
+      "system.vinculos.negativo.uuid": enlace("vinculos", "negativo"),
       name: d.nombre?.trim() || this.actor.name,
       "system.concepto": d.concepto ?? "",
       "system.atributos": atributos,
       "system.marcas": marcas,
-      "system.relaciones": d.relaciones,
+      "system.relaciones.izquierda": { ...d.relaciones?.izquierda, uuid: enlace("relaciones", "izquierda") },
+      "system.relaciones.derecha": { ...d.relaciones?.derecha, uuid: enlace("relaciones", "derecha") },
       "system.objeto.nombre": d.objeto?.nombre ?? "",
       "system.objeto.historia": d.objeto?.historia ?? "",
       "system.pregunta.texto": d.pregunta?.texto ?? "",

@@ -1,6 +1,6 @@
 <div class="er-cuerpo er-cuerpo-secundaria">
   <header class="er-cabecera">
-    <img class="er-cabecera-img" src="{{actor.img}}" alt="" data-edit="img"
+    <img class="er-cabecera-img" src="{{actor.img}}" alt="" data-retrato="{{actor.id}}" data-edit="img"
          data-action="{{#if editando}}editImage{{else}}showPortraitArtwork{{/if}}">
     <div class="er-cabecera-datos">
       {{#if editando}}<input class="er-titulo-input" type="text" name="name" value="{{actor.name}}" placeholder="Nombre de la comunidad">
@@ -14,6 +14,7 @@
       {{#if editable}}
       <button type="button" data-action="editar" class="{{#if editando}}activo{{/if}}" data-tooltip="{{#if editando}}Bloquear{{else}}Desbloquear imagen y nombre{{/if}}">
         <i class="fa-solid {{#if editando}}fa-lock-open{{else}}fa-lock{{/if}}"></i></button>
+      <button type="button" data-action="retrato" data-tooltip="Encuadre del retrato: zona y zoom"><i class="fa-solid fa-crop-simple"></i></button>
       {{/if}}
     </div>
   </header>

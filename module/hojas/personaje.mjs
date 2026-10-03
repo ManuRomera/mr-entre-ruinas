@@ -5,7 +5,6 @@
  * En modo compacto queda solo la columna izquierda con un resumen.
  */
 import { HojaER } from "./base.mjs";
-import { DialogV2 } from "../compat.mjs";
 import { RUTA, estado } from "../mesa.mjs";
 import { signo } from "../actor.mjs";
 import { valorPorCasilla, puedeGastar, repartoPendiente } from "../reglas.mjs";
@@ -56,7 +55,7 @@ export class HojaPersonaje extends HojaER {
     const vinculo = clave => {
       const v = s.vinculos[clave];
       const otro = HojaER.resolver(v);
-      return { ...v, clave, img: otro?.img, uuidOtro: otro?.uuid };
+      return { ...v, clave, img: otro?.img, uuidOtro: otro?.uuid, idOtro: otro?.id };
     };
     const refugios = game.actors.filter(a => a.type === "refugio");
     const cargas = refugios.flatMap(r => Object.entries(r.system.roles)
@@ -152,13 +151,8 @@ export class HojaPersonaje extends HojaER {
     this.document.ganarCaos(`Empeora deliberadamente la vida de su Vínculo Negativo${quien ? ` (${quien})` : ""}.`);
   }
 
-  static async #revelar() {
-    const ok = await DialogV2.confirm({
-      window: { title: "Revelar la pregunta incómoda" },
-      content: "<p>La respuesta se publicará en el chat y quedará visible en tu hoja para toda la mesa.</p>",
-      classes: ["mr-entre-ruinas", "er-dialogo"]
-    });
-    if (ok) this.document.revelarPregunta();
+  static #revelar() {
+    return game.mrEntreRuinas.dialogos.revelar(this.document);
   }
 
   static #recuperar() {

@@ -67,6 +67,21 @@ export class HojaRefugio extends HojaER {
     });
   }
 
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    // Cada porción del reloj es un botón para el teclado: Intro o Espacio equivalen a un clic.
+    for (const p of this.element.querySelectorAll(".er-reloj path[data-action]")) {
+      p.setAttribute("role", "button");
+      p.setAttribute("tabindex", "0");
+      p.setAttribute("aria-label", `Porción ${p.dataset.n}`);
+      p.addEventListener("keydown", ev => {
+        if (ev.key !== "Enter" && ev.key !== " ") return;
+        ev.preventDefault();
+        p.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      });
+    }
+  }
+
   /** Clic en el punto N fija el valor en N (el punto 0 existe: a 0 se llega a propósito). */
   static #valor(event, boton) {
     this.document.fijarValor(boton.dataset.clave, Number(boton.dataset.n));

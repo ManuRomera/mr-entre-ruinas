@@ -89,6 +89,11 @@ export function sugerirVoz(orden, actual, yaFueron = []) {
   return rotado.find(u => u !== actual && !yaFueron.includes(u)) ?? rotado[0];
 }
 
+/** M 16: «demasiadas Marcas» es una decisión de mesa; un límite de 0 desactiva el aviso. */
+export function demasiadasMarcas(total, limite) {
+  return Number(limite) > 0 && Number(total) >= Number(limite);
+}
+
 /** Elemento al azar de una lista; `azar` inyectable para los tests. */
 export function alAzar(lista, azar = Math.random) {
   return lista.length ? lista[Math.floor(azar() * lista.length)] : null;

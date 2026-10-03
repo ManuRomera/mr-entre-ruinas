@@ -77,7 +77,16 @@ export function finEpisodio({ cliffhanger = "", voz = "" } = {}) {
 registrarOperacion("inicioEpisodio", async () => {
   const hambrientos = game.actors.filter(a => a.type === "refugio" && a.system.valores.suministros === 0);
   if (!hambrientos.length) return;
-  for (const actor of personajes()) await actor.ganarEstres(1, `Pasa hambre: los Suministros de ${hambrientos[0].name} están a 0.`);
+  const motivo = `Pasan hambre: los Suministros de ${hambrientos[0].name} están a 0.`;
+  const filas = [];
+  for (const actor of personajes()) {
+    const r = await actor.ganarEstres(1, motivo, { agrupar: true });
+    if (r) filas.push(`${actor.nombreCorto} ${r.valor}/${r.max}${r.crisis ? " ¡Crisis!" : ""}`);
+  }
+  // Una sola tarjeta para todos; quien llega a la Crisis tiene además la suya.
+  if (filas.length) {
+    await publicar({ tipo: "estres", tono: "estres", icono: "fa-solid fa-wave-square", etiqueta: "Hambre", titulo: "Todos ganan 1 Estrés", texto: motivo, cita: filas.join(" · ") });
+  }
 });
 
 registrarOperacion("finEpisodio", async ({ cliffhanger, voz }) => {
@@ -90,6 +99,7 @@ registrarOperacion("finEpisodio", async ({ cliffhanger, voz }) => {
     tipo: "fin", tono: "voz", icono: "fa-solid fa-radio",
     etiqueta: `Temporada ${e.temporada} · Episodio ${e.episodio}`, titulo: "Fin del episodio",
     cita: String(cliffhanger ?? "").trim(),
+    botones: [{ etiqueta: "Revisar mis vínculos", icono: "fa-solid fa-link", accion: "vinculos" }],
     texto: sig.nuevaTemporada
       ? "Termina la temporada. El grupo cambia, las relaciones evolucionan, el refugio puede desaparecer. Y el mundo empeora un poco más."
       : "Podéis cambiar vuestros vínculos, romper relaciones, crear otras nuevas o revelar secretos."

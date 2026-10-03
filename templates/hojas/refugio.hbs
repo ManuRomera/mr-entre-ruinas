@@ -1,7 +1,7 @@
 <div class="er-cuerpo er-cuerpo-refugio">
   {{!-- ═══ Siempre a la vista: identidad, cinco valores y Estrés colectivo ═══ --}}
   <header class="er-cabecera">
-    <img class="er-cabecera-img" src="{{actor.img}}" alt="" data-edit="img"
+    <img class="er-cabecera-img" src="{{actor.img}}" alt="" data-retrato="{{actor.id}}" data-edit="img"
          data-action="{{#if editando}}editImage{{else}}showPortraitArtwork{{/if}}">
     <div class="er-cabecera-datos">
       {{#if editando}}<input class="er-titulo-input" type="text" name="name" value="{{actor.name}}" placeholder="Nombre del refugio">
@@ -21,6 +21,7 @@
       {{#if editable}}
       <button type="button" data-action="editar" class="{{#if editando}}activo{{/if}}" data-tooltip="{{#if editando}}Bloquear{{else}}Desbloquear imagen, nombre y borrados{{/if}}">
         <i class="fa-solid {{#if editando}}fa-lock-open{{else}}fa-lock{{/if}}"></i></button>
+      <button type="button" data-action="retrato" data-tooltip="Encuadre del retrato: zona y zoom"><i class="fa-solid fa-crop-simple"></i></button>
       {{/if}}
     </div>
   </header>
@@ -83,6 +84,18 @@
         </label>
       </details>
 
+      <details class="er-bloque" data-memoria="expedicion" {{#if secciones.expedicion}}open{{/if}}>
+        <summary><h3 class="er-cinta">Expediciones</h3><span class="er-nota">Salir siempre cuesta algo.</span></summary>
+        <div class="er-botonera">
+          <button type="button" class="er-boton er-boton-suave" data-action="oraculo" data-lista="objetivosExpedicion"><i class="fa-solid fa-dice"></i> Objetivo</button>
+          <button type="button" class="er-boton er-boton-suave" data-action="oraculo" data-lista="preguntasExpedicion"><i class="fa-solid fa-dice"></i> Pregunta antes de salir</button>
+          <button type="button" class="er-boton er-boton-suave" data-action="oraculo" data-lista="complicacionesExpedicion"><i class="fa-solid fa-dice"></i> Complicación</button>
+          {{#if editable}}<button type="button" class="er-boton er-boton-peligro" data-action="ganarEstres" data-texto="Una expedición fracasa."><i class="fa-solid fa-person-walking-arrow-loop-left"></i> Fracasa</button>{{/if}}
+        </div>
+      </details>
+    </div>
+
+    <div class="er-columna">
       <details class="er-bloque" data-memoria="marcas" {{#if secciones.marcas}}open{{/if}}>
         <summary><h3 class="er-cinta">Marcas del refugio</h3><span class="er-nota">Cómo ha cambiado tras cada Crisis.</span></summary>
         <ol class="er-marcas">
@@ -101,9 +114,7 @@
         </div>
         {{/if}}
       </details>
-    </div>
 
-    <div class="er-columna">
       <details class="er-bloque" data-memoria="relojes" {{#if secciones.relojes}}open{{/if}}>
         <summary><h3 class="er-cinta">Relojes</h3><span class="er-nota">Clic avanza · clic derecho retrocede.</span></summary>
         <div class="er-relojes">
@@ -130,7 +141,9 @@
         </div>
         {{/if}}
       </details>
+    </div>
 
+    <div class="er-columna">
       <details class="er-bloque" data-memoria="roles" {{#if secciones.roles}}open{{/if}}>
         <summary><h3 class="er-cinta">Roles</h3><span class="er-nota">No son clases: son cargas.</span></summary>
         <ul class="er-roles">
@@ -143,22 +156,13 @@
         </ul>
       </details>
 
-      <details class="er-bloque" data-memoria="expedicion" {{#if secciones.expedicion}}open{{/if}}>
-        <summary><h3 class="er-cinta">Expediciones</h3><span class="er-nota">Salir siempre cuesta algo.</span></summary>
-        <div class="er-botonera">
-          <button type="button" class="er-boton er-boton-suave" data-action="oraculo" data-lista="objetivosExpedicion"><i class="fa-solid fa-dice"></i> Objetivo</button>
-          <button type="button" class="er-boton er-boton-suave" data-action="oraculo" data-lista="preguntasExpedicion"><i class="fa-solid fa-dice"></i> Pregunta antes de salir</button>
-          <button type="button" class="er-boton er-boton-suave" data-action="oraculo" data-lista="complicacionesExpedicion"><i class="fa-solid fa-dice"></i> Complicación</button>
-          {{#if editable}}<button type="button" class="er-boton er-boton-peligro" data-action="ganarEstres" data-texto="Una expedición fracasa."><i class="fa-solid fa-person-walking-arrow-loop-left"></i> Fracasa</button>{{/if}}
-        </div>
+      <details class="er-bloque" data-memoria="diario" {{#if secciones.diario}}open{{/if}}>
+        <summary><h3 class="er-cinta">Crónica del refugio</h3><span class="er-nota">Normas, nombres, lo que nadie quiere recordar.</span></summary>
+        {{#if editable}}<prose-mirror name="system.notas" value="{{system.notas}}" toggled>{{{notas}}}</prose-mirror>
+        {{else}}<div class="er-notas">{{{notas}}}</div>{{/if}}
       </details>
     </div>
 
-    <details class="er-bloque er-ancho" data-memoria="diario" {{#if secciones.diario}}open{{/if}}>
-      <summary><h3 class="er-cinta">Crónica del refugio</h3><span class="er-nota">Normas, nombres, lo que nadie quiere recordar.</span></summary>
-      {{#if editable}}<prose-mirror name="system.notas" value="{{system.notas}}" toggled>{{{notas}}}</prose-mirror>
-      {{else}}<div class="er-notas">{{{notas}}}</div>{{/if}}
-    </details>
   </main>
 
   <datalist id="er-sustentos-{{actor.id}}">{{#each listas.sustentos.items}}<option value="{{this}}"></option>{{/each}}</datalist>
