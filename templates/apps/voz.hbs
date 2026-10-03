@@ -3,7 +3,7 @@
   <header class="er-voz-cabecera">
     <div class="er-voz-fila">
       <div class="er-voz-retrato">
-        {{#if voz}}<img src="{{voz.img}}" alt="">{{else}}<i class="fa-solid fa-microphone-lines-slash"></i>{{/if}}
+        {{#if voz}}<img src="{{voz.img}}" alt="" data-retrato="{{voz.id}}">{{else}}<i class="fa-solid fa-microphone-lines-slash"></i>{{/if}}
       </div>
       <div class="er-voz-datos">
         <span class="er-cinta">Temporada {{e.temporada}} · Episodio {{e.episodio}}/6</span>
@@ -35,16 +35,16 @@
       {{/if}}
     </div>
 
-    <nav class="tabs er-pestanas" aria-label="Secciones del panel">
+    <nav class="tabs er-pestanas" role="tablist" aria-label="Secciones del panel">
       {{#each tabs}}
-      <a data-action="tab" data-group="{{group}}" data-tab="{{id}}" class="{{cssClass}}"><i class="{{icon}}" inert></i> <span>{{label}}</span></a>
+      <button type="button" role="tab" aria-selected="{{#if active}}true{{else}}false{{/if}}" data-action="tab" data-group="{{group}}" data-tab="{{id}}" class="{{cssClass}}"><i class="{{icon}}" inert></i> <span>{{label}}</span></button>
       {{/each}}
     </nav>
   </header>
 
   <main class="er-principal">
     {{!-- Episodio --}}
-    <section class="tab {{tabs.episodio.cssClass}}" data-group="voz" data-tab="episodio">
+    <section class="tab {{tabs.episodio.cssClass}}" role="tabpanel" data-group="voz" data-tab="episodio">
       <h3 class="er-cinta">Preparación</h3>
       <p class="er-nota">Cuatro elementos sueltos bastan. No escribas una trama cerrada. <small>M 11</small></p>
       {{#each preparacion}}
@@ -81,7 +81,7 @@
     </section>
 
     {{!-- Consecuencias --}}
-    <section class="tab {{tabs.consecuencias.cssClass}}" data-group="voz" data-tab="consecuencias">
+    <section class="tab {{tabs.consecuencias.cssClass}}" role="tabpanel" data-group="voz" data-tab="consecuencias">
       <div class="er-oraculo-cabecera">
         <h3 class="er-cinta er-tono-coste">Éxito con coste · 7–9</h3>
         <button type="button" class="er-boton-mini" data-action="consecuencia" data-tooltip="Una al azar"><i class="fa-solid fa-dice"></i></button>
@@ -98,7 +98,7 @@
     </section>
 
     {{!-- Oráculos --}}
-    <section class="tab {{tabs.oraculos.cssClass}}" data-group="voz" data-tab="oraculos">
+    <section class="tab {{tabs.oraculos.cssClass}}" role="tabpanel" data-group="voz" data-tab="oraculos">
       <p class="er-nota">Clic en una línea para publicarla; el dado elige una al azar.</p>
       {{#each oraculos}}
       <details class="er-bloque" data-memoria="oraculo-{{id}}" {{#if abierto}}open{{/if}}>

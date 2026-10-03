@@ -2,7 +2,7 @@
   "id": "mr-entre-ruinas",
   "title": "MR- Entre Ruinas",
   "description": "Sistema para Foundry VTT de Entre Ruinas, el juego de rol narrativo de MIDRA sobre supervivientes emocionalmente rotos en un mundo que ya no tiene futuro. Incluye el manual completo, el suplemento de campaña Un Mundo Violento y el suplemento Refugios: fichas de personaje, refugio y comunidad, Panel de la Voz, cuatro pregenerados y todas las tablas.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13.351"

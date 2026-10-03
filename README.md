@@ -39,7 +39,7 @@ Foundry VTT **13** o **14**. Probado en 13.351; el código que cambia entre vers
 
 ### Refugio, comunidades y PNJ
 - **Refugio** (suplemento Refugios): Seguridad, Suministros, Moral, Ruido y Confianza siempre a la vista, con aviso al llegar a su umbral; Estrés colectivo con Crisis, Movimiento de comunidad y Marca; qué lo mantiene vivo (si se pierde, Crisis inmediata); relojes de amenaza; roles; expediciones.
-- Suministros a 0: al empezar cada episodio, todos ganan 1 Estrés.
+- Suministros a 0: al empezar cada episodio, todos ganan 1 Estrés (una sola tarjeta de chat). Cada umbral del refugio ofrece su consecuencia a un clic y la tarjeta permite avanzar un reloj.
 - **Comunidades** definidas por lo que necesitan, temen, sacrifican y ocultan. **PNJ** con los estados de violencia de Un Mundo Violento.
 - Con la opción *Mesa sin director* (activa por defecto), refugios, comunidades y PNJ pertenecen a toda la mesa y las fichas de personaje son visibles para todos.
 
@@ -53,6 +53,10 @@ Foundry VTT **13** o **14**. Probado en 13.351; el código que cambia entre vers
 - **Manual y suplementos**: los tres libros completos como diarios, más una guía de uso del sistema.
 - **Supervivientes pregenerados**: Luz, Gabo, Marta e Iván, con retrato, token y objeto.
 - **Tablas de la Voz**: 37 tablas aleatorias en tres carpetas (Manual, Un Mundo Violento, Refugios).
+
+### Accesibilidad y retratos
+- Un icono **de accesibilidad** en la cabecera de todas las ventanas abre las opciones habituales: tamaño del texto, alto contraste, fuente de alta legibilidad, reducir movimiento y ayuda inmediata. Son ajustes de cada navegador.
+- **Encuadre del retrato**: elige la zona y el zoom de la imagen de cada personaje, refugio, comunidad o PNJ; se ve igual en la ficha, el Panel de la Voz, el chat y el directorio.
 
 ### Memoria de ventanas
 Todas las ventanas del sistema recuerdan, por usuario y mundo, su **posición**, su **tamaño** (uno para el modo normal y otro para el compacto), la **pestaña** activa, las **secciones plegadas** y el **desplazamiento**. Una ficha nueva hereda el último tamaño usado. Si otra persona provoca un repintado mientras escribes, tu texto sin guardar, el foco y el cursor se conservan. Para empezar de cero: *Configuración → Memoria de ventanas → Olvidar posiciones*.

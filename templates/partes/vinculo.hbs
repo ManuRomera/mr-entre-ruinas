@@ -1,6 +1,6 @@
 <article class="er-tarjeta er-vinculo er-vinculo-{{v.clave}}" data-soltar="system.vinculos.{{v.clave}}">
   <figure class="er-polaroid {{#if v.uuidOtro}}enlazada{{/if}}" {{#if v.uuidOtro}}data-action="abrir" data-uuid="{{v.uuidOtro}}" data-tooltip="Abrir su ficha"{{else}}data-tooltip="Arrastra aquí un personaje"{{/if}}>
-    {{#if v.img}}<img src="{{v.img}}" alt="">{{else}}<i class="fa-solid fa-user"></i>{{/if}}
+    {{#if v.img}}<img src="{{v.img}}" alt="" {{#if v.idOtro}}data-retrato="{{v.idOtro}}"{{/if}}>{{else}}<i class="fa-solid fa-user"></i>{{/if}}
   </figure>
   <div class="er-vinculo-texto">
     <h4>{{titulo}} <i class="fa-solid {{#if (eq v.clave 'positivo')}}fa-heart{{else}}fa-xmark{{/if}} er-vinculo-signo"></i></h4>

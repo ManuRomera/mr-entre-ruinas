@@ -5,8 +5,9 @@
  */
 import { ActorSheetV2, HandlebarsApplicationMixin, enriquecer } from "../compat.mjs";
 import { ConMemoria } from "../memoria.mjs";
-import { estado } from "../mesa.mjs";
+import { ID, estado } from "../mesa.mjs";
 import { coincideNombre } from "../reglas.mjs";
+import { EditorRetrato, pintarRetratos } from "../retrato.mjs";
 
 export class HojaER extends ConMemoria(HandlebarsApplicationMixin(ActorSheetV2)) {
   static DEFAULT_OPTIONS = {
@@ -15,6 +16,7 @@ export class HojaER extends ConMemoria(HandlebarsApplicationMixin(ActorSheetV2))
     window: { resizable: true },
     actions: {
       editar: HojaER.#editar,
+      retrato: HojaER.#retrato,
       compacto: HojaER.#compacto,
       cajon: HojaER.#cajon,
       abrir: HojaER.#abrir,
@@ -57,8 +59,9 @@ export class HojaER extends ConMemoria(HandlebarsApplicationMixin(ActorSheetV2))
     await super._onRender(context, options);
     this.element.classList.toggle("compacto", this.compacto);
     this.element.classList.toggle("editando", this.editando);
+    pintarRetratos(this.element);
     // Un cajón recién abierto puede caer bajo el borde: se trae a la vista.
-    if (this.cajonAbierto) this.element.querySelector(".er-cajon")?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    if (this.cajonAbierto) this.element.querySelector(".er-cajon")?.scrollIntoView({ block: "nearest", behavior: game.settings.get(ID, "a11yMovimiento") ? "auto" : "smooth" });
   }
 
   /** Busca el Actor de un vínculo: por uuid si está enlazado; si no, por nombre o apodo. */
@@ -93,6 +96,10 @@ export class HojaER extends ConMemoria(HandlebarsApplicationMixin(ActorSheetV2))
   static #editar() {
     this.editando = !this.editando;
     this.render();
+  }
+
+  static #retrato() {
+    return EditorRetrato.abrir(this.document);
   }
 
   static #compacto() {

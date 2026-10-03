@@ -14,6 +14,14 @@ const IMAGENES = {
   comunidad: `${RUTA}/assets/iconos/comunidad.webp`
 };
 
+/** R 2: lo que la Voz puede hacer en cuanto un valor del refugio llega a su umbral. */
+const CONSECUENCIA_UMBRAL = {
+  seguridad: { etiqueta: "Amenaza al azar", icono: "fa-solid fa-door-open", accion: "oraculo", datos: { lista: "amenazas" } },
+  moral: { etiqueta: "Quiebra al azar", icono: "fa-solid fa-heart-crack", accion: "oraculo", datos: { lista: "movimientosComunidad" } },
+  ruido: { etiqueta: "Quién llega", icono: "fa-solid fa-tower-broadcast", accion: "oraculo", datos: { lista: "amenazas" } },
+  suministros: { etiqueta: "El refugio gana 1 Estrés", icono: "fa-solid fa-wave-square", accion: "estresRefugio", datos: { texto: "Falta comida." } }
+};
+
 export const signo = n => (n > 0 ? `+${n}` : n < 0 ? `−${Math.abs(n)}` : "0");
 const { OBSERVER, OWNER } = CONST.DOCUMENT_OWNERSHIP_LEVELS;
 
@@ -31,6 +39,8 @@ export class ActorER extends Actor {
         displayBars: CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER
       };
     }
+    // Los PNJ y las comunidades no tienen Estrés: sin barra que apunte a nada.
+    if (this.type === "pnj" || this.type === "comunidad") cambios["prototypeToken.bar1.attribute"] = null;
     // Sin director: lo que no es un personaje pertenece a toda la mesa; los personajes se ven.
     if (game.settings.get(ID, "mesaCompartida") && !data.ownership?.default) {
       cambios["ownership.default"] = this.type === "personaje" ? OBSERVER : OWNER;
@@ -74,8 +84,8 @@ export class ActorER extends Actor {
     };
     if (banda === "coste") tarjeta.lista = opciones("consecuencias", "consecuencia", { uuid: this.uuid });
     if (banda === "fallo") {
-      tarjeta.lista = opciones("movimientosDuros", "movimiento");
-      tarjeta.botones = [{ etiqueta: "Movimiento al azar", icono: "fa-solid fa-dice", accion: "movimiento" }];
+      tarjeta.lista = opciones("movimientosDuros", "movimiento", { uuid: this.uuid });
+      tarjeta.botones = [{ etiqueta: "Movimiento al azar", icono: "fa-solid fa-dice", accion: "movimiento", datos: { uuid: this.uuid } }];
       if (game.settings.get(ID, "estresAlFallar")) {
         const { valor: estres, crisis } = await this.#sumarEstres(1);
         tarjeta.estres = { valor: estres, max: this.system.estres.max, crisis };
@@ -99,14 +109,21 @@ export class ActorER extends Actor {
     return { etiqueta: "Resolver la Crisis", icono: "fa-solid fa-burst", accion: "crisis", datos: { uuid: this.uuid }, dueno: this.uuid };
   }
 
+  /** Quien la resuelve es su jugador: si la provoca un GM (el hambre, p. ej.), le llega por el chat (ver chat.mjs). */
   #abrirCrisis() {
-    if (this.isOwner) game.mrEntreRuinas.dialogos.crisis(this);
+    if (this.isOwner && !(game.user.isGM && this.hasPlayerOwner)) game.mrEntreRuinas.dialogos.crisis(this);
   }
 
   /** M 8.1 */
-  async ganarEstres(cantidad = 1, motivo = "") {
-    if (this.system.enCrisis) return ui.notifications.warn(`${this.name} ya está en Crisis: resuélvela primero.`);
+  async ganarEstres(cantidad = 1, motivo = "", { agrupar = false } = {}) {
+    if (this.system.enCrisis) {
+      if (!agrupar) ui.notifications.warn(`${this.name} ya está en Crisis: resuélvela primero.`);
+      return null;
+    }
     const { valor, crisis } = await this.#sumarEstres(cantidad);
+    const resumen = { valor, max: this.system.estres.max, crisis };
+    // Agrupado (p. ej. el hambre): sin tarjeta propia salvo que llegue a la Crisis, que necesita su botón.
+    if (agrupar && !crisis) return resumen;
     await publicar({
       tipo: "estres", tono: "estres", icono: "fa-solid fa-wave-square", img: this.img,
       etiqueta: `Estrés ${valor}/${this.system.estres.max}`, subtitulo: this.name,
@@ -115,6 +132,7 @@ export class ActorER extends Actor {
       botones: crisis ? [this.#botonCrisis()] : []
     }, { actor: this });
     if (crisis) this.#abrirCrisis();
+    return resumen;
   }
 
   async fijarEstres(valor) {
@@ -136,11 +154,14 @@ export class ActorER extends Actor {
     const marcas = [...this.system.marcas];
     if (marca.trim()) marcas.push({ texto: marca.trim(), permanente: true, suprimida: false });
     await this.update({ "system.estres.value": 0, "system.marcas": marcas });
+    const demasiadas = R.demasiadasMarcas(marcas.length, game.settings.get(ID, "marcasLimite"));
     await publicar({
       tipo: "crisis", tono: "fallo", icono: "fa-solid fa-burst", img: this.img,
       etiqueta: "Crisis", subtitulo: this.name, titulo: explosion || "Explota",
-      texto: "Vacía todo su Estrés, pero a cambio gana una nueva Marca permanente.",
-      marca: marca.trim()
+      texto: "Vacía todo su Estrés, pero a cambio gana una nueva Marca permanente." +
+        (demasiadas ? ` Ya carga ${marcas.length} Marcas: ¿sigue adelante o se despide? (M 16)` : ""),
+      marca: marca.trim(),
+      lista: demasiadas ? opciones("abandonar", "destino", { uuid: this.uuid }) : undefined
     }, { actor: this });
   }
 
@@ -226,6 +247,8 @@ export class ActorER extends Actor {
       tipo: "recuperacion", tono: "refugio", icono: r.icono, img: this.img,
       etiqueta: "Escena de refugio", subtitulo: this.name, titulo: r.titulo, texto: detalle, cita: extra.texto?.trim()
     }, { actor: this });
+    // «Revelar una verdad»: si hay una pregunta incómoda guardada, se ofrece sacarla a la luz.
+    if (opcion === "verdad") await game.mrEntreRuinas.dialogos.revelar(this);
   }
 
   get recuperadoEnEscena() {
@@ -244,9 +267,12 @@ export class ActorER extends Actor {
     const efecto = R.umbralRefugio(clave, antes, despues);
     if (efecto) {
       const v = VALORES_REFUGIO[clave];
+      const { etiqueta, icono, accion, datos } = CONSECUENCIA_UMBRAL[clave] ?? {};
       await publicar({
         tipo: "umbral", tono: "fallo", icono: v.icono, img: this.img,
-        etiqueta: `${v.nombre} ${despues}`, subtitulo: this.name, titulo: `${v.nombre} a ${despues}`, texto: efecto
+        etiqueta: `${v.nombre} ${despues}`, subtitulo: this.name, titulo: `${v.nombre} a ${despues}`, texto: efecto,
+        botones: accion ? [{ etiqueta, icono, accion, datos: { ...datos, uuid: this.uuid } }] : [],
+        lista: this.#listaRelojes()
       }, { actor: this });
     }
   }
@@ -281,10 +307,19 @@ export class ActorER extends Actor {
       etiqueta: `Estrés del refugio ${valor}/${max}`, subtitulo: this.name,
       titulo: crisis ? "Crisis del refugio" : "El refugio gana 1 Estrés", texto: motivo,
       estres: { valor, max, crisis },
-      lista: crisis ? opciones("movimientosComunidad", "movimiento") : null,
+      lista: crisis ? opciones("movimientosComunidad", "movimiento") : this.#listaRelojes(),
       botones: crisis ? [{ etiqueta: "Resolver la Crisis", icono: "fa-solid fa-burst", accion: "crisisRefugio", datos: { uuid: this.uuid }, dueno: this.uuid }] : []
     }, { actor: this });
     if (crisis && this.isOwner) game.mrEntreRuinas.dialogos.crisisRefugio(this);
+  }
+
+  /** R 7: «cada vez que una situación empeora, el reloj avanza»: se ofrece avanzar uno sin salir del chat. */
+  #listaRelojes() {
+    const items = this.system.relojes
+      .map((r, i) => ({ r, i }))
+      .filter(({ r }) => r.marcados < r.segmentos)
+      .map(({ r, i }) => ({ texto: r.nombre || `Reloj ${i + 1}`, accion: "reloj", datos: { uuid: this.uuid, indice: i } }));
+    return items.length ? { titulo: "¿Avanza algún reloj?", items } : null;
   }
 
   /** R 3: Movimiento de Comunidad, Estrés a 0 y una Marca del refugio. */

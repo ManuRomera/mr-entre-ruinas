@@ -14,6 +14,8 @@ import { Asistente } from "./module/apps/asistente.mjs";
 import { dialogos } from "./module/apps/dialogos.mjs";
 import { escucharChat, publicar, oraculo } from "./module/chat.mjs";
 import * as episodio from "./module/episodio.mjs";
+import { registrarAccesibilidad } from "./module/accesibilidad.mjs";
+import { pintarRetratos, repintarRetratos } from "./module/retrato.mjs";
 
 Hooks.once("init", () => {
   CONFIG.Actor.documentClass = ActorER;
@@ -31,6 +33,7 @@ Hooks.once("init", () => {
   }
 
   registrarAjustes();
+  registrarAccesibilidad();
   loadTemplates([`${RUTA}/templates/partes/vinculo.hbs`, `${RUTA}/templates/partes/marcas.hbs`]);
 
   game.mrEntreRuinas = {
@@ -81,7 +84,9 @@ Hooks.on("mrEntreRuinas.estado", () => {
 });
 
 /** Los roles del refugio se ven en la hoja del personaje: al cambiarlos, se repinta. */
-Hooks.on("updateActor", actor => {
+Hooks.on("updateActor", (actor, cambios) => {
+  const flags = cambios.flags?.[ID];
+  if ("img" in cambios || (flags && ("retrato" in flags || "-=retrato" in flags))) repintarRetratos();
   if (actor.type !== "refugio") return;
   for (const app of foundry.applications.instances.values()) if (app instanceof HojaPersonaje) app.render();
 });
@@ -89,6 +94,7 @@ Hooks.on("updateActor", actor => {
 /** Acceso directo en el directorio de Actores. */
 Hooks.on("renderActorDirectory", (app, html) => {
   const raiz = html instanceof HTMLElement ? html : html[0];
+  pintarRetratos(raiz);
   const acciones = raiz?.querySelector(".header-actions");
   if (!acciones || acciones.querySelector(".er-boton-voz")) return;
   const boton = document.createElement("button");

@@ -3,6 +3,12 @@ import assert from "node:assert/strict";
 import * as R from "../module/reglas.mjs";
 import { LISTAS, GASTOS_CAOS, VALORES_REFUGIO, ORACULOS, TIPOS_REFUGIO } from "../module/listas.mjs";
 
+test("M 16: el aviso de demasiadas Marcas respeta el límite y se puede apagar", () => {
+  assert.ok(R.demasiadasMarcas(5, 5));
+  assert.ok(!R.demasiadasMarcas(4, 5));
+  assert.ok(!R.demasiadasMarcas(9, 0));
+});
+
 test("M 7.2: bandas de resultado", () => {
   assert.equal(R.resultado(12), "limpio");
   assert.equal(R.resultado(10), "limpio");

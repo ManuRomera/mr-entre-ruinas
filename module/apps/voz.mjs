@@ -12,6 +12,7 @@ import { FASES, LISTAS, ORACULOS, ESCENARIOS } from "../listas.mjs";
 import { alAzar } from "../reglas.mjs";
 import { publicar, oraculo } from "../chat.mjs";
 import * as episodio from "../episodio.mjs";
+import { pintarRetratos } from "../retrato.mjs";
 
 export class PanelVoz extends ConMemoria(HandlebarsApplicationMixin(ApplicationV2)) {
   static MEMORIA = "panel-voz";
@@ -87,6 +88,27 @@ export class PanelVoz extends ConMemoria(HandlebarsApplicationMixin(ApplicationV
       seccionReglas: this.abierto("reglas-voz", false),
       escenaRefugio: Boolean(e.refugio)
     });
+  }
+
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    pintarRetratos(this.element);
+    // Pestañas con teclado: Tab llega a ellas, las flechas pasan de una a otra.
+    const pestanas = [...this.element.querySelectorAll('.er-pestanas [role="tab"]')];
+    this.element.querySelector(".er-pestanas")?.addEventListener("keydown", ev => {
+      const paso = { ArrowRight: 1, ArrowLeft: -1 }[ev.key];
+      const i = pestanas.indexOf(document.activeElement);
+      if (!paso || i < 0) return;
+      ev.preventDefault();
+      const destino = pestanas[(i + paso + pestanas.length) % pestanas.length];
+      destino.click();
+      destino.focus();
+    });
+  }
+
+  changeTab(tab, group, opciones) {
+    super.changeTab(tab, group, opciones);
+    for (const b of this.element?.querySelectorAll('.er-pestanas [role="tab"]') ?? []) b.setAttribute("aria-selected", String(b.dataset.tab === tab));
   }
 
   /** Los campos de preparación y el cliffhanger se guardan al salir de la casilla. */

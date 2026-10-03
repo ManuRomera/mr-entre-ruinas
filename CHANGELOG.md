@@ -1,5 +1,33 @@
 # Cambios
 
+## 1.1.0
+
+**Automatismos nuevos**
+
+- **«Activar una Crisis»** (Movimiento Duro, M 12) llena de verdad el Estrés de quien ha fallado y abre su Crisis. Funciona también si lo pulsa la Voz.
+- **Umbrales del refugio con consecuencia a un clic**: Seguridad 0 → amenaza al azar; Moral 0 → quiebra al azar; Ruido 5 → quién llega; Suministros 0 → «el refugio gana 1 Estrés» (R 3, falta comida).
+- **Relojes desde el chat** (R 7): cuando el refugio empeora (Estrés, umbrales) la tarjeta ofrece avanzar uno de los relojes en marcha.
+- **Revelar una verdad**: al elegir esa recuperación se ofrece sacar a la luz la pregunta incómoda del personaje.
+- **Hambre en una sola tarjeta**: todos los personajes ganan su Estrés y el chat recibe un resumen; quien llega a la Crisis conserva su tarjeta con botón.
+- **Fin de episodio**: la tarjeta trae «Revisar mis vínculos», que abre la ficha con la sección Vínculos desplegada (M 6.4).
+- **Demasiadas Marcas** (M 16): al resolver una Crisis, si el personaje llega al límite (ajuste *Aviso de «demasiadas Marcas»*, 5 por defecto, 0 lo apaga) la tarjeta ofrece las salidas de Abandonar el juego.
+
+**Diseño y usabilidad**
+
+- **Refugio sin desplazamiento** a su tamaño por defecto: las secciones se reparten en tres columnas (dos en anchos medios, una en estrechos) y la Crónica queda al final de la tercera.
+- **Contraste**: el borde de las casillas de Estrés, las fichas de Caos y los puntos de los valores del refugio sube a 3,5:1 (WCAG 1.4.11).
+- **Pestañas del Panel de la Voz** accesibles con teclado: son botones con `role="tab"`, `aria-selected` y navegación con las flechas.
+
+**Accesibilidad, retratos y arreglos** (de la primera ronda)
+
+- **Iconos de la cabecera de ventana arreglados** (cerrar, menú, ficha): el CSS propio les pisaba la fuente Font Awesome y se veían como cuadrados. Los botones con icono ya no se tocan.
+- **Accesibilidad**: icono nuevo en la cabecera de todas las ventanas del sistema (fichas, Panel de la Voz, asistente, diálogos y diarios del manual), justo antes del de cerrar. Abre un panel con tamaño del texto (85–160 %), alto contraste, fuente de alta legibilidad, reducir movimiento y ayuda inmediata. Son ajustes de cliente y también están en *Configuración → Ajustes del sistema*. Respeta `prefers-reduced-motion`.
+- **Encuadre del retrato**: botón en la ficha (personaje, refugio, comunidad y PNJ) para elegir la zona y el zoom de la imagen. Se guarda en `flags.mr-entre-ruinas.retrato` y se ve igual en la ficha, el Panel de la Voz, los vínculos, el chat y el directorio de Actores.
+- Una Crisis provocada por otra persona o por el GM (p. ej. el hambre) ya no abre el diálogo en la pantalla del GM: se abre sola a quien lleva el personaje.
+- Los relojes del refugio se pueden manejar con el teclado.
+- El asistente de creación ya no deja enlazado a un Actor un vínculo cuyo nombre se ha cambiado.
+- Los PNJ y las comunidades ya no declaran una barra de token de Estrés que no tienen.
+
 ## 1.0.0
 
 Primera versión publicada.

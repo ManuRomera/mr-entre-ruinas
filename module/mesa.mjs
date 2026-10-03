@@ -57,6 +57,11 @@ export function registrarAjustes() {
     hint: "Abre el asistente de seis pasos al crear un personaje nuevo.",
     scope: "client", config: true, type: Boolean, default: true
   });
+  game.settings.register(ID, "marcasLimite", {
+    name: "Aviso de «demasiadas Marcas»",
+    hint: "Al resolver una Crisis, si el personaje llega a este número de Marcas se ofrecen las salidas de Abandonar el juego (M 16). 0 lo desactiva.",
+    scope: "world", config: true, type: Number, default: 5, range: { min: 0, max: 12, step: 1 }
+  });
   game.settings.register(ID, "bienvenida", { scope: "world", config: false, type: String, default: "" });
   game.settings.registerMenu(ID, "ventanas", {
     name: "Memoria de ventanas",
@@ -94,6 +99,19 @@ const OPERACIONES = {
   async estres({ uuid, motivo }) {
     const actor = await fromUuid(uuid);
     if (actor?.type === "personaje") await actor.ganarEstres(1, String(motivo ?? ""));
+  },
+  async crisis({ uuid }) {
+    const actor = await fromUuid(uuid);
+    if (actor?.type === "personaje") await actor.fijarEstres(actor.system.estres.max);
+  },
+  async estresRefugio({ uuid, motivo }) {
+    const refugio = await fromUuid(uuid);
+    if (refugio?.type === "refugio") await refugio.ganarEstresRefugio(String(motivo ?? ""));
+  },
+  async reloj({ uuid, indice }) {
+    const refugio = await fromUuid(uuid);
+    const reloj = refugio?.type === "refugio" && refugio.system.relojes[Number(indice)];
+    if (reloj) await refugio.fijarReloj(Number(indice), reloj.marcados + 1);
   }
 };
 
