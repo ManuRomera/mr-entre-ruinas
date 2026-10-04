@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/img/banner.png" alt="Entre Ruinas · Sistema para Foundry VTT" width="100%">
+</p>
+
 # MR- Entre Ruinas
 
 <p align="center">
@@ -20,6 +24,13 @@ Incluye el **Manual de juego** completo y los suplementos **Un Mundo Violento**
 (campaña) y **Refugios**, con fichas, herramientas de mesa, pregenerados y tablas.
 
 <br clear="right">
+
+## Así se ve
+
+<p align="center">
+  <img src="docs/img/ficha.png" alt="Ficha de personaje con Marcas, Vínculos, Estrés y Caos" width="49%">
+  <img src="docs/img/refugio.png" alt="Ficha de refugio con recursos, relojes y roles" width="49%">
+</p>
 
 ## Instalar
 
