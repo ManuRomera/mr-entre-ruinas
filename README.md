@@ -108,3 +108,15 @@ npm run build     # compila _data/ y module/listas.mjs a packs/ (con Foundry cer
 
 **Entre Ruinas**, **Un Mundo Violento** y **Refugios** —textos, ambientación, personajes y arte— son obra de **MIDRA · Midespinas & Amdra** y se incluyen con su permiso.
 Implementación para Foundry VTT: **Manu Romera**. El código es MIT (ver [LICENSE](LICENSE)); las tipografías Oswald, Barlow Semi Condensed y Caveat, SIL OFL 1.1.
+
+---
+
+<p align="center">
+  <a href="https://github.com/ManuRomera">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/brand/MR_09_Monograma_Marfil_Transparente.png">
+      <img src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/brand/MR_10_Monograma_Negro_Transparente.png" alt="MR · Manu Romera" height="56">
+    </picture>
+  </a><br>
+  <sub>Hecho por <a href="https://github.com/ManuRomera"><b>Manu Romera</b></a> · Digital RPG Design</sub>
+</p>
